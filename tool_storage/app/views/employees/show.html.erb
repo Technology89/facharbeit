@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Vorname:</strong>
+  <%= @employee.Vorname %>
+</p>
+
+<p>
+  <strong>Nachname:</strong>
+  <%= @employee.Nachname %>
+</p>
+
+<p>
+  <strong>Personalnummer:</strong>
+  <%= @employee.Personalnummer %>
+</p>
+
+<table>
+	 <thead>
+    <tr>
+      <th>Hersteller</th>
+      <th>Modell</th>
+      <th>Barcode</th>
+      <th>Ausgeliehen</th>
+      <th>Ausgegeben am</th>
+    </tr>
+  </thead>
+	<tbody>
+		<% @employee.indexmachines.each do |machine| %>
+		 <tr>
+			<% a=Machine.find_by_id(machine.machine_id) %>
+			<td><%= a.hersteller %></td> 
+			<td><%= a.modell %></td> 
+			<td><%= a.barcode %></td> 
+			<td><% if machine.ausgeliehen == true %>
+						<%= "<i class='fi-check'></i>".html_safe %>
+					<% else %>
+					<%= "<i class='fi-x'></i>".html_safe %>
+					<% end %></td> 
+			<td><%= machine.ausgegeben_am %></td> 
+			
+			<% end %>
+		</tr>
+	</tbody>
+</table>
+
+
+<%= link_to 'Edit', edit_employee_path(@employee) %> |
+<%= link_to 'Back', employees_path %>

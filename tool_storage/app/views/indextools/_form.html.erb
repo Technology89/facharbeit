@@ -1,0 +1,33 @@
+<%= form_for(@indextool) do |f| %>
+  <% if @indextool.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@indextool.errors.count, "error") %> prohibited this indextool from being saved:</h2>
+
+      <ul>
+      <% @indextool.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ausgeliehen %><br>
+    <%= f.check_box :ausgeliehen %>
+  </div>
+  <div class="field">
+    <%= f.label :ausgeliehen_am %><br>
+    <%= f.date_select :ausgeliehen_am %>
+  </div>
+  <div class="field">
+    <%= f.label :employee_id %><br>
+    <%= f.text_field :employee_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tool_id %><br>
+    <%= f.text_field :tool_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Hersteller: MyString
+  Modell: MyString
+  Barcode: 1
+  Lagerbestand: 1
+  Mindestbestand: 1
+  Anzahl_Ersatz: 1
+
+two:
+  Hersteller: MyString
+  Modell: MyString
+  Barcode: 1
+  Lagerbestand: 1
+  Mindestbestand: 1
+  Anzahl_Ersatz: 1

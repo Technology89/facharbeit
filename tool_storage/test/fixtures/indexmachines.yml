@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ausgeliehen: false
+  ausgeliehen_am: 2016-08-25
+  employee_id: 
+  machine_id: 
+
+two:
+  ausgeliehen: false
+  ausgeliehen_am: 2016-08-25
+  employee_id: 
+  machine_id: 

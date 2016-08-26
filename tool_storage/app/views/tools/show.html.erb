@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hersteller:</strong>
+  <%= @tool.Hersteller %>
+</p>
+
+<p>
+  <strong>Modell:</strong>
+  <%= @tool.Modell %>
+</p>
+
+<p>
+  <strong>Barcode:</strong>
+  <%= @tool.Barcode %>
+</p>
+
+<p>
+  <strong>Lagerbestand:</strong>
+  <%= @tool.Lagerbestand %>
+</p>
+
+<p>
+  <strong>Mindestbestand:</strong>
+  <%= @tool.Mindestbestand %>
+</p>
+
+<p>
+  <strong>Anzahl ersatz:</strong>
+  <%= @tool.Anzahl_Ersatz %>
+</p>
+
+<%= link_to 'Edit', edit_tool_path(@tool) %> |
+<%= link_to 'Back', tools_path %>

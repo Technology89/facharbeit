@@ -1,10 +1,21 @@
 <%# navigation styled for Zurb Foundation 5 %>
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
-    <li class="name"><%= link_to 'Home', root_path %></li>
+    <li class="name"><%= link_to 'Home', root_path %>
+      <% if current_user %>
+        <%= link_to 'Log out', session_path, method: :delete %>
+        <%= link_to 'New User', signup_path %>
+      <% else %>
+        <%= link_to 'Log In', signin_path %>      
+      <% end %>
+      <% if current_employee %>
+        <%= link_to 'Neuer Kunde', employee_session_path, method: :delete %>
+        
+      <% else %>
+        <%= link_to 'Log In', begin_path %>      
+      <% end %>
+    </li>   
     <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-     <li><%= link_to "SignIn", signin_path %></li> |
-    <li><%= link_to "SignUp", signup_path %></li>
   </ul>
   <div class="top-bar-section">
     <ul>
