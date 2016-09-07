@@ -1,36 +1,20 @@
-<%= form_for(@indexmachine) do |f| %>
-  <% if @indexmachine.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@indexmachine.errors.count, "error") %> prohibited this indexmachine from being saved:</h2>
-
-      <ul>
-      <% @indexmachine.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :ausgeliehen %><br>
-    <%= f.check_box :ausgeliehen %>
-  </div>
-  <div class="field">
-    <%= f.label :ausgegeben_am %><br>
-    <%= f.date_select :ausgegeben_am %>
-  </div>
-  <div class="field">
-    <%= f.label :employee_id %><br>
-    <%= f.text_field :employee_id %>
-  </div>
-  <div class="field">
-    <%= fa.label :machine_id %><br>
-    <%= fa.text_field :machine_id %>
-   </div>
+<%= form_for [@employee, @indexmachine] do |f| %>
 
 
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <%= f.hidden_field :employee_id, value: @employee.id %>
+    <%= f.hidden_field :ausgeliehen, value: "false" %>
+      <%= f.hidden_field :ausgegeben_am, value: "2016-09-09" %>
+    <div class="row">
+      <div class="medium-3 columns">
+       <%= label_tag :barcode %>
+      </div>
+      <div class="medium-9 columns">
+       <%= text_field_tag :barcode %>
+      </div>
+    </div>  
+      <div class="row">
+      <div class="medium-12 columns">
+        <%= f.submit %>
+      </div>
+    </div>  
+  <% end %> 

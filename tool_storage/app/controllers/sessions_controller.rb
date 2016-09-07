@@ -7,8 +7,9 @@ class SessionsController < ApplicationController
 		if user = User.authenticate(params[:name], params[:password])
 			session[:user_id] = user.id
 			flash[:notice] = "Hey BOY, back again"
-			redirect_to session[:intended_url] || root_path
-			session[:intended_url] = nil 
+			#redirect_to session[:intended_url] || new_employee_session_path
+			#session[:intended_url] = nil 
+			redirect_to new_employee_session_url
 		else
 			flash.now[:alert] = "Name nicht gefunden oder falsches Passwort"
 			render :new

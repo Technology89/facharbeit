@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_signin
   before_action :require_correct_user, only: [:edit, :update, :destroy]
-
+  before_action :require_employee, only: [:index, :show]
   # GET /users
   # GET /users.json
   def index

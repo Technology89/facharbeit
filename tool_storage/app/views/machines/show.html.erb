@@ -1,28 +1,30 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Hersteller:</strong>
-  <%= @machine.Hersteller %>
+  <%= @machine.hersteller %>
 </p>
 
 <p>
   <strong>Modell:</strong>
-  <%= @machine.Modell %>
+  <%= @machine.modell %>
 </p>
 
 <p>
   <strong>Barcode:</strong>
-  <%= @machine.Barcode %>
+  <% @barcode = Barby::EAN8.new('1234567') %>
+  <% @barcode_for_html = Barby::CairoOutputter.new(@barcode) %>
+  <%=raw @barcode_for_html.to_png %>
 </p>
 
 <p>
   <strong>Ausgeliegen:</strong>
-  <%= @machine.Ausgeliegen %>
+  <%= @machine.ausgeliehen %>
 </p>
 
 <p>
   <strong>Ausgeliehen seit:</strong>
-  <%= @machine.Ausgeliehen_seit %>
+  <%= @machine.ausgegeben_am %>
 </p>
 
 <%= link_to 'Edit', edit_machine_path(@machine) %> |

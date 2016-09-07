@@ -4,13 +4,13 @@ class EmployeeSessionsController < ApplicationController
 	end
 
 	def create
-		if employee = Employee.authenticate(params[:personalnummer])
+		if employee = Employee.setup(params[:personalnummer])
 			session[:employee_id] = employee.id
-			flash[:notice] = "Hey BOY, back again"
-			redirect_to session[:intended_url] || root_path
+			flash[:notice] = "Werkzeuge für #{employee.vorname} #{employee.nachname}"
+			redirect_to employee_indexmachines_url(employee.id)
 			session[:intended_url] = nil 
 		else
-			flash.now[:alert] = "Name nicht gefunden oder falsches Passwort"
+			flash.now[:alert] = "Personalnummer nicht vorhanden"
 			render :new
 		end
 	end	

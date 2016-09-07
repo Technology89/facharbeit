@@ -47,3 +47,7 @@ section {
   @extend .row;
   margin-top: 20px;
   }
+table.barby-barcode { border-spacing: 0; }
+tr.barby-row {}
+td.barby-cell { width: 1px; height: 100px; }
+td.barby-cell.on { background: #000; }
