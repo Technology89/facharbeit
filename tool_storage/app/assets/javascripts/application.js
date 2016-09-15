@@ -18,3 +18,14 @@
 $(function() {
   $(document).foundation();
 });
+
+// function printpage()
+ // {
+//  window.print()
+ // }
+
+function printpage() {
+    // Some logic determines which div should be printed...
+    // This example uses div3.
+    window.print();
+  }

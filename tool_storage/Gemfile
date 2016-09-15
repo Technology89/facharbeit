@@ -30,6 +30,12 @@ gem 'foundation-icons-sass-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem 'barby'
+
+gem 'cairo'
+
+gem 'chunky_png'
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

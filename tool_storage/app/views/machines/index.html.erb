@@ -7,8 +7,7 @@
       <th>Hersteller</th>
       <th>Modell</th>
       <th>Barcode</th>
-      <th>Ausgeliegen</th>
-      <th>Ausgeliehen seit</th>
+      <th>Ausgeliehen</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,7 +19,6 @@
         <td><%= machine.modell %></td>
         <td><%= machine.barcode %></td>
         <td><%= machine.ausgeliehen %></td>
-        <td><%= machine.ausgegeben_am %></td>
         <td><%= link_to 'Show', machine %></td>
         <td><%= link_to 'Edit', edit_machine_path(machine) %></td>
         <td><%= link_to 'Destroy', machine, method: :delete, data: { confirm: 'Are you sure?' } %></td>

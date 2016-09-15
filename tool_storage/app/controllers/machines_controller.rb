@@ -1,22 +1,27 @@
 class MachinesController < ApplicationController
 require 'barby'
 require 'barby/barcode/ean_8'
-require 'barby/outputter/cairo_outputter'
 require 'barby/outputter/png_outputter'
 
-  before_action :set_machine, only: [:show, :edit, :update, :destroy]
+before_action :set_machine, only: [:show, :edit, :update, :destroy]
 before_action :require_signin
   # GET /machines
   # GET /machines.json
   def index
     @machines = Machine.all
-
   end
 
+
+
   # GET /machines/1
-  # GET /machines/1.json
+  # GET /machines/1.json   
   def show
-   
+  @barcode = Barby::EAN8.new(@machine.barcode.to_s)
+  File.open('app/assets/images/ean8.png', 'wb'){|f|
+    f.write @barcode.to_png(:xdim => 4, :height => 100, :margin => 5)
+  }
+
+  
   end
 
   # GET /machines/new
