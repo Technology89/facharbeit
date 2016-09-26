@@ -18,10 +18,18 @@ before_action :require_signin
   def show
   @barcode = Barby::EAN8.new(@machine.barcode.to_s)
   File.open('app/assets/images/ean8.png', 'wb'){|f|
-    f.write @barcode.to_png(:xdim => 4, :height => 100, :margin => 5)
+    f.write @barcode.to_png(:xdim => 4, :height => 60, :margin => 5)
   }
-
-  
+  Employee.all.each do | employee | 
+    indexmachines = employee.indexmachines 
+    indexmachines.each do | indexmachine | 
+      if indexmachine.machine_id == @machine.id 
+        @employee = employee
+        @indexmachine = indexmachine
+      end 
+    end 
+  end 
+ 
   end
 
   # GET /machines/new
@@ -36,6 +44,9 @@ before_action :require_signin
   # POST /machines
   # POST /machines.json
   def create
+    last_entry = Machine.all.order("barcode DESC")
+    last_barcode = last_entry.first.barcode
+    params[:machine][:barcode] = last_barcode + 1
     @machine = Machine.new(machine_params)
 
     respond_to do |format|
@@ -81,6 +92,6 @@ before_action :require_signin
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def machine_params
-      params.require(:machine).permit(:Hersteller, :Modell, :Barcode, :Ausgeliegen, :Ausgeliehen_seit)
+      params.require(:machine).permit(:hersteller, :modell, :barcode, :ausgeliehen, :ausgegeben_am)
     end
 end

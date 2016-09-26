@@ -17,7 +17,7 @@
       <td class="printable"><%= image_tag("ean8.png")  %></td>
     </tr>
     <tr>
-      <td class="barcode printable"><center><%= @barcode %></center></td>
+      <td class="barcode printable"><center><%= @machine.barcode %></center></td>
     </tr>
   </table>
 
@@ -26,11 +26,23 @@
 </p>
 
 <p>
-  <strong>Ausgeliegen:</strong>
-  <%= @machine.ausgeliehen %>
+  <strong>Ausgegeben:</strong>
+  <%= bool_to_german(@machine.ausgeliehen) %>
 </p>
 
 
+  <% if @employee == nil %>
+  <% else %>
+<p> 
+  <strong>Ausgegeben an:</strong><br>
+  Name:   <%= @employee.vorname %> <%= @employee.nachname %>
+  <br>Personalnummer: <%= @employee.personalnummer %>
+  <br>Datum: <%= @indexmachine.ausgegeben_am %> 
+  <br>Ausgeliehen: <%= bool_to_german(@indexmachine.ausgeliehen) %> 
+</p>
 
-<%= link_to 'Edit', edit_machine_path(@machine) %> |
-<%= link_to 'Back', machines_path %>
+<% end %>
+
+<%= link_to 'Bearbeiten', edit_machine_path(@machine) %> |
+<%= link_to 'Löschen', @machine, method: :delete, data: { confirm: 'Sind sie sicher das sie diesen Eintrag löschen möchten?' } %> |
+<%= link_to 'Zurück', machines_path %> 

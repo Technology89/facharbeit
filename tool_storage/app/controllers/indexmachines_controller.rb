@@ -28,7 +28,7 @@ before_action :set_machines
   # POST /indexmachines
   # POST /indexmachines.json
   def create
-    machine = Machine.find_by(barcode: params[:barcode][0...-1])
+    machine = Machine.find_by(barcode: params[:barcode][0...7])
 
     if machine == nil
       flash[:alert] = "Barcode nicht gefunden"

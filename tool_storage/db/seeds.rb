@@ -16,6 +16,6 @@ Tool.create(hersteller: "Knipex", modell: "Spitzzange groß", barcode: "3354968"
 Tool.create(hersteller: "Knipex", modell: "Schnabelzange klein", barcode: "3354969", lagerbestand: "17", mindestbestand: "5")
 Tool.create(hersteller: "Knipex", modell: "Schnabelzange groß", barcode: "3354970", lagerbestand: "25", mindestbestand: "5")
 
-Machine.create(hersteller: "Bosch", modell: "Bohrhammer SDS", barcode: "6364283", ausgeliehen: "true", ausgegeben_am: "2016-03-03")
-Machine.create(hersteller: "Dewalt", modell: "Akkuschrauber", barcode: "6364284", ausgeliehen: "false", ausgegeben_am: "")
-Machine.create(hersteller: "Bosch", modell: "Stichsäge", barcode: "6364285", ausgeliehen: "false", ausgegeben_am: "")
+Machine.create(hersteller: "Bosch", modell: "Bohrhammer SDS", barcode: "6364283", ausgeliehen: "true")
+Machine.create(hersteller: "Dewalt", modell: "Akkuschrauber", barcode: "6364284", ausgeliehen: "false")
+Machine.create(hersteller: "Bosch", modell: "Stichsäge", barcode: "6364285", ausgeliehen: "false")

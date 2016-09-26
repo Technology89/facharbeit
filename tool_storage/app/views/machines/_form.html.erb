@@ -12,18 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :Hersteller %><br>
-    <%= f.text_field :Hersteller %>
+    <%= f.label :hersteller %><br>
+    <%= f.text_field :hersteller %>
   </div>
   <div class="field">
-    <%= f.label :Modell %><br>
-    <%= f.text_field :Modell %>
-  </div>
-  <div class="field">
-    <%= f.label :Barcode %><br>
-    <%= f.number_field :Barcode %>
+    <%= f.label :modell %><br>
+    <%= f.text_field :modell %>
   </div>
 
+<%= f.hidden_field :barcode %>
 
   <div class="actions">
     <%= f.submit %>
