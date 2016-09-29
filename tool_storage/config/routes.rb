@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new'
   get 'signin' => 'sessions#new'
   get 'begin' => 'employee_sessions#new'
+  get 'reorder' => 'tools#reorder'
 
   root "users#index"
   resources :users

@@ -1,0 +1,34 @@
+<% if @tools_min.blank? %>
+  <p>
+    <h3>Zur Zeit gibt es keine Nachbestellungen</h3>
+  </p>
+<% else %>
+<p>
+  <h3>Werkzeuge unter Mindestbestand</h3>
+</p>
+<table>
+  <thead>
+    <tr>
+      <th>Hersteller</th>
+      <th>Modell</th>
+      <th>Barcode</th>
+      <th>Lagerbestand</th>
+      <th>Mindestbestand</th>
+      <th>Anzahl ersatz</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @tools_min.order("barcode").each do |tool| %>
+    <tr>
+      <td><%= tool.hersteller %></td>
+      <td><%= tool.modell %></td>
+      <td><%= tool.barcode %></td>
+      <td><%= tool.lagerbestand %></td>
+      <td><%= tool.mindestbestand %></td>
+      <td><%= tool.anzahl_ersatz %></td>      
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>

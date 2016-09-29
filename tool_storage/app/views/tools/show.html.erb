@@ -1,32 +1,40 @@
 <p>
   <strong>Hersteller:</strong>
-  <%= @tool.Hersteller %>
+  <%= @tool.hersteller %>
 </p>
 
 <p>
   <strong>Modell:</strong>
-  <%= @tool.Modell %>
+  <%= @tool.modell %>
 </p>
 
 <p>
   <strong>Barcode:</strong>
-  <%= @tool.Barcode %>
+  <table>
+    <tr>
+      <td><%= image_tag("ean8.png")  %></td>
+    </tr>
+    <tr>
+      <td class="white-back"><center><%= @tool.barcode %></center></td>
+    </tr>
+  </table>
 </p>
 
 <p>
   <strong>Lagerbestand:</strong>
-  <%= @tool.Lagerbestand %>
+  <%= @tool.lagerbestand %>
 </p>
 
 <p>
   <strong>Mindestbestand:</strong>
-  <%= @tool.Mindestbestand %>
+  <%= @tool.mindestbestand %>
 </p>
 
 <p>
   <strong>Anzahl ersatz:</strong>
-  <%= @tool.Anzahl_Ersatz %>
+  <%= @tool.anzahl_ersatz %>
 </p>
 
-<%= link_to 'Edit', edit_tool_path(@tool) %> |
-<%= link_to 'Back', tools_path %>
+<%= link_to 'Bearbeiten', edit_tool_path(@tool) %> |
+<%= link_to 'Löschen', @tool, method: :delete, data: { confirm: 'Sind sie sicher das sie diesen Eintrag löschen möchten?' } %> |
+<%= link_to 'Zurück', tools_path %>

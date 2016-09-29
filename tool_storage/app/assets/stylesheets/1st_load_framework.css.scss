@@ -6,10 +6,24 @@
 .top-bar .name {
   font-size: rem-calc(13);
   line-height: 45px; }
+
 .top-bar .name a {
   font-weight: normal;
-  color: white;
-  padding: 0 15px; }
+  color: black;
+  padding: 0 15px;
+  &:hover {
+        
+        background: linear-gradient(to bottom, #e6f0a3 0%,#d2e638 60%,#c3d825 61%,#dbf043 100%);
+    }
+ }
+
+
+
+.top-bar {
+  background: linear-gradient(to bottom, #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%);
+  border: 1px solid black;
+  font-color: black;
+}
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create mixins using Foundation classes
@@ -60,4 +74,17 @@ section {
 .icon-green {
   color: green;
   font-size: 1.5em;
+}
+.white-back {
+  background-color: white;
+}
+
+.header {
+  width: 100%;
+  background-color: white;
+  border: 0;
+  margin: 0;
+}
+.header .td {
+  width: 50%;
 }

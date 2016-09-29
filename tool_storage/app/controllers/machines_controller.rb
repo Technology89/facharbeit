@@ -1,10 +1,10 @@
 class MachinesController < ApplicationController
-require 'barby'
-require 'barby/barcode/ean_8'
-require 'barby/outputter/png_outputter'
+  require 'barby'
+  require 'barby/barcode/ean_8'
+  require 'barby/outputter/png_outputter'
 
-before_action :set_machine, only: [:show, :edit, :update, :destroy]
-before_action :require_signin
+  before_action :set_machine, only: [:show, :edit, :update, :destroy]
+  before_action :require_signin
   # GET /machines
   # GET /machines.json
   def index
@@ -16,20 +16,20 @@ before_action :require_signin
   # GET /machines/1
   # GET /machines/1.json   
   def show
-  @barcode = Barby::EAN8.new(@machine.barcode.to_s)
-  File.open('app/assets/images/ean8.png', 'wb'){|f|
-    f.write @barcode.to_png(:xdim => 4, :height => 60, :margin => 5)
-  }
-  Employee.all.each do | employee | 
-    indexmachines = employee.indexmachines 
-    indexmachines.each do | indexmachine | 
-      if indexmachine.machine_id == @machine.id 
-        @employee = employee
-        @indexmachine = indexmachine
+    @barcode = Barby::EAN8.new(@machine.barcode.to_s)
+    File.open('app/assets/images/ean8.png', 'wb'){|f|
+      f.write @barcode.to_png(:xdim => 4, :height => 60, :margin => 5)
+    }
+    Employee.all.each do | employee | 
+      indexmachines = employee.indexmachines 
+      indexmachines.each do | indexmachine | 
+        if indexmachine.machine_id == @machine.id 
+          @employee = employee
+          @indexmachine = indexmachine
+        end 
       end 
     end 
-  end 
- 
+   
   end
 
   # GET /machines/new

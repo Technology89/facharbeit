@@ -1,5 +1,5 @@
 class EmployeesController < ApplicationController
-  before_action :set_employee, only: [:show, :edit, :update, :destroy]
+before_action :set_employee, only: [:show, :edit, :update, :destroy]
 before_action :require_signin
 before_action :require_employee, except: [:new, :create]
 before_action :require_correct_employee, only: [:edit, :update, :destroy]
@@ -58,6 +58,7 @@ before_action :require_correct_employee, only: [:edit, :update, :destroy]
   # DELETE /employees/1.json
   def destroy
     @employee.destroy
+    fail
     respond_to do |format|
       format.html { redirect_to employees_url, notice: 'Employee was successfully destroyed.' }
       format.json { head :no_content }
@@ -80,6 +81,6 @@ before_action :require_correct_employee, only: [:edit, :update, :destroy]
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:Vorname, :Nachname, :Personalnummer)
+      params.require(:employee).permit(:vorname, :nachname, :personalnummer)
     end
 end

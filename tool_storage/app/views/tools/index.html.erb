@@ -1,5 +1,7 @@
-<h1>Listing Tools</h1>
 
+<p>
+  <h3>Werkzeuge</h3>
+</p>
 <table>
   <thead>
     <tr>
@@ -12,19 +14,18 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @tools.each do |tool| %>
+    <% @tools.order("barcode").each do |tool| %>
       <tr>
-        <td><%= tool.Hersteller %></td>
-        <td><%= tool.Modell %></td>
-        <td><%= tool.Barcode %></td>
-        <td><%= tool.Lagerbestand %></td>
-        <td><%= tool.Mindestbestand %></td>
-        <td><%= tool.Anzahl_Ersatz %></td>
-        <td><%= link_to 'Show', tool %></td>
-        <td><%= link_to 'Edit', edit_tool_path(tool) %></td>
-        <td><%= link_to 'Destroy', tool, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= tool.hersteller %></td>
+        <td><%= tool.modell %></td>
+        <td><%= tool.barcode %></td>
+        <td><%= tool.lagerbestand %></td>
+        <td><%= tool.mindestbestand %></td>
+        <td><%= tool.anzahl_ersatz %></td>
+        <td><%= link_to "<i class='fi-eye icon-green'></i>".html_safe, tool %></td>
+        <td><%= link_to "<i class='fi-pencil icon-blue'></i>".html_safe, edit_tool_path(tool) %></td>
+        <td><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, tool, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +33,4 @@
 
 <br>
 
-<%= link_to 'New Tool', new_tool_path %>
+<%= link_to 'Neues Werkzeug hinzufügen', new_tool_path %>
