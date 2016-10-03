@@ -1,47 +1,73 @@
 <p>
   <strong>Vorname:</strong>
   <%= @employee.vorname %>
-</p>
-
-<p>
+<br>
   <strong>Nachname:</strong>
   <%= @employee.nachname %>
-</p>
-
-<p>
+<br>
   <strong>Personalnummer:</strong>
   <%= @employee.personalnummer %>
 </p>
 
+<h1>Maschinen von <%= @employee.vorname %> <%= @employee.nachname %></h1>
+
 <table>
-	 <thead>
+  <thead>
     <tr>
-      <th>Hersteller</th>
-      <th>Modell</th>
+      
+      <th>Ausgegeben am</th>
+      <th>Ausgegeben von</th>
+      <th>Machine</th>
       <th>Barcode</th>
       <th>Ausgeliehen</th>
-      <th>Ausgegeben am</th>
+      <th></th>
     </tr>
   </thead>
-	<tbody>
-		<% @employee.indexmachines.each do |machine| %>
-		 <tr>
-			<% a=Machine.find_by_id(machine.machine_id) %>
-			<td><%= a.hersteller %></td> 
-			<td><%= a.modell %></td> 
-			<td><%= a.barcode %></td> 
-			<td><% if machine.ausgeliehen == true %>
-						<%= "<i class='fi-check'></i>".html_safe %>
-					<% else %>
-					<%= "<i class='fi-x'></i>".html_safe %>
-					<% end %></td> 
-			<td><%= machine.ausgegeben_am %></td> 
-			
-			<% end %>
-		</tr>
-	</tbody>
+
+  <tbody>
+    <% @indexmachines.each do |indexmachine| %>
+      <tr>
+        <td><%= indexmachine.ausgegeben_am %></td>
+        <td><%= indexmachine.ausgegeben_von %></td>
+        <td><%= @machines.find_by(id: indexmachine.machine_id).hersteller %> <%= @machines.find_by(id:indexmachine.machine_id).modell %></td>
+        <td><%= @machines.find_by(id: indexmachine.machine_id).barcode %></td>
+        <td><%= bool_to_german(indexmachine.ausgeliehen) %></td>
+        <td><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee_indexmachine_path(@employee.id, indexmachine.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
+<p>
+<%= link_to 'Neue Maschine ausleihen', new_employee_indexmachine_path(@employee.id) %>
+</p>
+<h1>Werkzeug von <%= @employee.vorname %> <%= @employee.nachname %></h1>
 
+<table>
+  <thead>
+    <tr>
+      <th>Ausgegeben am</th>
+      <th>Ausgegeben von</th>
+      <th>Werkzeug</th>
+      <th>Barcode</th>
+      <th></th>
+    </tr>
+  </thead>
 
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+  <tbody>
+    <% @indextools.each do |indextool| %>
+      <tr>
+        <td><%= indextool.ausgegeben_am %></td>
+        <td><%= indextool.ausgegeben_von %></td>
+        <td><%= @tools.find_by_id(indextool.tool_id).hersteller %> <%= @tools.find_by_id(indextool.tool_id).modell %></td>
+        <td><%= @tools.find_by_id(indextool.tool_id).barcode %></td>        
+        <td><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee_indextool_path(@employee.id, indextool.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p>
+<%= link_to 'Neues Werkzeug ausleihen', new_employee_indextool_path(@employee.id) %>
+</p>
+
+<%= link_to 'Bearbeiten', edit_employee_path(@employee) %> |
+<%= link_to 'Zurück', employees_path %>

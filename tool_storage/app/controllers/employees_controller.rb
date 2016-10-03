@@ -1,8 +1,9 @@
 class EmployeesController < ApplicationController
 before_action :set_employee, only: [:show, :edit, :update, :destroy]
 before_action :require_signin
-before_action :require_employee, except: [:new, :create]
 before_action :require_correct_employee, only: [:edit, :update, :destroy]
+before_action :set_machines, only: [:show] 
+before_action :set_tools, only: [:show] 
   # GET /employees
   # GET /employees.json
   def index
@@ -12,9 +13,12 @@ before_action :require_correct_employee, only: [:edit, :update, :destroy]
 
   # GET /employees/1
   # GET /employees/1.json
-  def show    
+  def show 
+    @indextools = @employee.indextools
+    @indexmachines = @employee.indexmachines   
   end
 
+ 
   # GET /employees/new
   def new
     @employee = Employee.new
@@ -77,6 +81,14 @@ before_action :require_correct_employee, only: [:edit, :update, :destroy]
     # Use callbacks to share common setup or constraints between actions.
     def set_employee
       @employee = Employee.find(params[:id])
+    end
+
+    def set_machines
+      @machines = Machine.all
+    end
+
+    def set_tools
+      @tools = Tool.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

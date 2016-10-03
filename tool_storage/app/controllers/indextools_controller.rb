@@ -19,7 +19,7 @@ before_action :require_employee
 
   # GET /indextools/new
   def new
-    @indextool = Indextool.new
+    @indextool = @employee.indextools.new(employee_id: @employee.id, ausgegeben_am: Date.current())
   end
 
   # GET /indextools/1/edit
@@ -29,18 +29,39 @@ before_action :require_employee
   # POST /indextools
   # POST /indextools.json
   def create
-    @indextool = Indextool.new(indextool_params)
+    tool = Tool.find_by(barcode: params[:barcode][0...7])
+     if tool == nil
+      flash[:alert] = "Barcode nicht gefunden"
+      redirect_to new_employee_indextool_url(@employee.id)
+    else
+      a = @employee.indextools.where(tool_id: tool.id)
 
-    respond_to do |format|
-      if @indextool.save
-        format.html { redirect_to @indextool, notice: 'Indextool was successfully created.' }
-        format.json { render :show, status: :created, location: @indextool }
+      if a.blank?
+        params[:indextool][:ausgegeben_am] = Date.today
+        params[:indextool][:tool_id] = tool.id
+        params[:indextool][:ausgegeben_von] = @current_user.name
+        @indextool = Indextool.new(indextool_params)
+        if @indextool.save
+          tool.lagerbestand = tool.lagerbestand - 1
+          tool.save
+              redirect_to new_employee_indextool_path(@employee.id)
+            
+        else
+            render :new, notice: "Fehler beim Speichern!"  
+        end 
       else
-        format.html { render :new }
-        format.json { render json: @indextool.errors, status: :unprocessable_entity }
+
+        tool.anzahl_ersatz = tool.anzahl_ersatz + 1
+        tool.lagerbestand = tool.lagerbestand - 1
+        tool.save
+       redirect_to employee_indextools_path(@employee.id)
       end
+      
     end
   end
+    
+
+ 
 
   # PATCH/PUT /indextools/1
   # PATCH/PUT /indextools/1.json
@@ -74,6 +95,6 @@ before_action :require_employee
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def indextool_params
-      params.require(:indextool).permit(:ausgeliehen, :ausgeliehen_am, :employee_id, :tool_id)
+      params.require(:indextool).permit(:ausgeliehen, :ausgegeben_am, :employee_id, :tool_id, :ausgegeben_von)
     end
 end

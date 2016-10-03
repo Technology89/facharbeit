@@ -36,6 +36,7 @@ before_action :set_machines
     else
       if machine.ausgeliehen == false
         params[:indexmachine][:machine_id] = machine.id
+        params[:indexmachine][:ausgegeben_von] = @current_user.name
         @indexmachine = @employee.indexmachines.new(indexmachine_params)
         
         if @indexmachine.save
@@ -83,9 +84,8 @@ before_action :set_machines
     end
 
 
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def indexmachine_params
-      params.require(:indexmachine).permit(:ausgeliehen, :ausgegeben_am, :employee_id, :machine_id)
+      params.require(:indexmachine).permit(:ausgeliehen, :ausgegeben_von,:ausgegeben_am, :employee_id, :machine_id)
     end
 end
