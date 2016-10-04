@@ -1,4 +1,15 @@
 // import the CSS framework
+$topbar-bg: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(109,179,242,1) 4%,rgba(84,163,238,1) 50%,rgba(54,144,240,1) 51%,rgba(30,105,222,1) 96%,rgba(0,0,0,1) 100%);
+$topbar-link-bg: $topbar-bg;
+$topbar-dropdown-bg: $topbar-bg;
+$topbar-dropdown-link-bg: linear-gradient(to bottom, rgba(109,179,242,1) 0%,rgba(84,163,238,1) 50%,rgba(54,144,240,1) 51%,rgba(30,105,222,1) 100%);
+$topbar-dropdown-link-bg-hover: linear-gradient(to bottom, rgba(172,208,239,1) 0%,rgba(166,202,237,1) 50%,rgba(115,177,239,1) 51%,rgba(108,153,221,1) 100%);
+$topbar-link-bg-hover: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(172,208,239,1) 4%,rgba(166,202,237,1) 50%,rgba(115,177,239,1) 51%,rgba(108,153,221,1) 96%,rgba(0,0,0,1) 100%);
+$topbar-link-color: #ffffff;
+$topbar-link-color-hover: #ffffff;
+$topbar-link-color-active: #ffffff;
+$topbar-link-color-active-hover: #ffffff;
+
 @import "foundation";
 @import "foundation-icons";
 
@@ -7,23 +18,15 @@
   font-size: rem-calc(13);
   line-height: 45px; }
 
-.top-bar .name a {
+ .top-bar .name a {
   font-weight: normal;
   color: black;
   padding: 0 15px;
-  &:hover {
-        
-        background: linear-gradient(to bottom, #e6f0a3 0%,#d2e638 60%,#c3d825 61%,#dbf043 100%);
-    }
+  
  }
 
 
 
-.top-bar {
-  background: linear-gradient(to bottom, #e6f0a3 0%,#d2e638 50%,#c3d825 51%,#dbf043 100%);
-  border: 1px solid black;
-  font-color: black;
-}
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create mixins using Foundation classes
@@ -55,7 +58,7 @@
 // to make views framework-neutral
 main {
   @include twelve-columns;
-  background-color: #eee;
+  background-color: #ffffff;
   }
 section {
   @extend .row;
@@ -63,17 +66,17 @@ section {
   }
 .icon-red {
   color: red;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 .icon-blue {
   color: blue;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 .icon-green {
   color: green;
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 .white-back {
   background-color: white;
@@ -87,4 +90,8 @@ section {
 }
 .header .td {
   width: 50%;
+}
+
+.center {
+  align: center;
 }

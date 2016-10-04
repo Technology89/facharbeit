@@ -7,7 +7,7 @@ class EmployeeSessionsController < ApplicationController
 		if employee = Employee.setup(params[:personalnummer])
 			session[:employee_id] = employee.id
 			flash[:notice] = "Werkzeuge für #{employee.vorname} #{employee.nachname}"
-			redirect_to employee_indexmachines_url(employee.id)
+			redirect_to employee_url(employee.id)
 			session[:intended_url] = nil 
 		else
 			flash.now[:alert] = "Personalnummer nicht vorhanden"

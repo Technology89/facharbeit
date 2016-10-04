@@ -6,4 +6,8 @@ module ApplicationHelper
 			"Nein"
 		end
 	end
+
+	def full_name(var)
+		var.vorname + " " + var.nachname
+	end
 end

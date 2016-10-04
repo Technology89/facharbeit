@@ -54,7 +54,7 @@ before_action :require_employee
         tool.anzahl_ersatz = tool.anzahl_ersatz + 1
         tool.lagerbestand = tool.lagerbestand - 1
         tool.save
-       redirect_to employee_indextools_path(@employee.id)
+        redirect_to new_employee_indextool_path(@employee.id)
       end
       
     end
@@ -80,10 +80,16 @@ before_action :require_employee
   # DELETE /indextools/1
   # DELETE /indextools/1.json
   def destroy
+    tool = Tool.find_by(tool_id: indextool.id)
+    tool.lagerbestand = tool.lagerbestand + 1
     @indextool.destroy
-    respond_to do |format|
-      format.html { redirect_to indextools_url, notice: 'Indextool was successfully destroyed.' }
-      format.json { head :no_content }
+      redirect_to employee_url(@employee.id)
+    end
+  end
+ def remove
+  
+    @indextool.destroy
+    redirect_to employee_url(@employee.id)
     end
   end
 

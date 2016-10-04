@@ -1,7 +1,7 @@
 <%= form_for(@employee) do |f| %>
   <% if @employee.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+      <h2> Es gab folgende Fehler <%= @employee.errors.count %> beim speichern:</h2>
 
       <ul>
       <% @employee.errors.full_messages.each do |message| %>
@@ -24,6 +24,10 @@
     <%= f.number_field :personalnummer %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <% if params[:action] == "new" %>
+      <%= f.submit "Anlegen" %>
+    <% else %>
+      <%= f.submit "Bearbeiten" %>
+    <% end %>
   </div>
 <% end %>

@@ -1,16 +1,4 @@
 <%= form_for(@machine) do |f| %>
-  <% if @machine.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@machine.errors.count, "error") %> prohibited this machine from being saved:</h2>
-
-      <ul>
-      <% @machine.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field">
     <%= f.label :hersteller %><br>
     <%= f.text_field :hersteller %>
@@ -23,6 +11,10 @@
 <%= f.hidden_field :barcode %>
 
   <div class="actions">
-    <%= f.submit %>
+    <% if params[:action] == "new" %>
+      <%= f.submit "Anlegen" %>
+    <% else %>
+      <%= f.submit "Bearbeiten" %>
+    <% end %>
   </div>
 <% end %>

@@ -61,12 +61,16 @@ before_action :set_tools, only: [:show]
   # DELETE /employees/1
   # DELETE /employees/1.json
   def destroy
+    if current_employee.id == @employee.id
+      session[:employee_id] = nil
+    end
+    
     @employee.destroy
-    fail
     respond_to do |format|
       format.html { redirect_to employees_url, notice: 'Employee was successfully destroyed.' }
       format.json { head :no_content }
     end
+    
   end
 
   private

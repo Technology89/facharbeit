@@ -20,6 +20,10 @@
     <%= f.password_field :password %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+     <% if params[:action] == "new" %>
+      <%= f.submit "Anlegen" %>
+    <% else %>
+      <%= f.submit "Bearbeiten" %>
+    <% end %>
   </div>
 <% end %>

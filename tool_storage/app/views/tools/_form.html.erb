@@ -1,17 +1,7 @@
 <%= form_for(@tool) do |f| %>
-  <% if @tool.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tool.errors.count, "error") %> prohibited this tool from being saved:</h2>
-
-      <ul>
-      <% @tool.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-<%= f.hidden_field :barcode %>
-<%= f.hidden_field :anzahl_ersatz %>
+  
+  <%= f.hidden_field :barcode %>
+  <%= f.hidden_field :anzahl_ersatz %>
   <div class="field">
     <%= f.label :hersteller %><br>
     <%= f.text_field :hersteller %>
@@ -30,6 +20,10 @@
     <%= f.number_field :mindestbestand %>
   </div> 
   <div class="actions">
-    <%= f.submit %>
+    <% if params[:action] == "new" %>
+      <%= f.submit "Anlegen" %>
+    <% else %>
+      <%= f.submit "Bearbeiten" %>
+    <% end %>
   </div>
 <% end %>

@@ -1,19 +1,20 @@
 <%= form_for [@employee, @indextool] do |f| %>
 
 
-    
-
+    <%= f.hidden_field :employee_id %>
+      <%= f.hidden_field :ausgegeben_am %>
+      <%= f.hidden_field :ausgegeben_von %>
     <div class="row">
       <div class="medium-3 columns">
-       <%= f.label :employee_id %>
+       <%= label_tag :barcode %>
       </div>
       <div class="medium-9 columns">
-        <%= f.text_field :employee_id %>
+       <%= text_field_tag :barcode, '', autofocus: true %>
       </div>
     </div>  
-      <div class="row">
+    <div class="row">
       <div class="medium-12 columns">
-        <%= f.submit %>
+        <%= f.submit "Ausgeben" %>
       </div>
     </div>  
   <% end %> 

@@ -9,25 +9,14 @@
     </td>
   </tr>
 </table>  
-<nav class="top-bar" data-topbar>
-  <ul class="title-area">
-    <li class="name"><%= link_to 'Home', root_path %></li>
-    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-  </ul>
+<nav class="top-bar" data-topbar>  
   <div class="top-bar-section">
+    <% if current_user %>    
     <ul>
       <li class="has-dropdown">
-       <%= link_to "Werkzeuge", tools_path %>
+       <%= link_to "Benutzer", users_path %>
         <ul class="dropdown">
-          <li><%= link_to "Neues Werkzeug", new_tool_path %></li>                   
-        </ul>
-      </li>
-    </ul>
-    <ul>
-      <li class="has-dropdown">
-       <%= link_to "Maschinen", machines_path %>
-        <ul class="dropdown">
-          <li><%= link_to "Neue Maschine", new_machine_path %></li>                   
+          <li><%= link_to "Neuer Benutzer", new_user_path %></li>                   
         </ul>
       </li>
     </ul>
@@ -39,12 +28,44 @@
         </ul>
       </li>
     </ul>
+    <ul>
+      <li class="has-dropdown">
+       <%= link_to "Werkzeuge", tools_path %>
+        <ul class="dropdown">
+          <li><%= link_to "Neues Werkzeug", new_tool_path %></li>
+          <li><%= link_to "Nachbestellung", reorder_path %></li>                    
+        </ul>
+      </li>
+    </ul>
+    <ul>
+      <li class="has-dropdown">
+       <%= link_to "Maschinen", machines_path %>
+        <ul class="dropdown">
+          <li><%= link_to "Neue Maschine", new_machine_path %></li>                   
+        </ul>
+      </li>
+    </ul>
+    <% end %>
     <ul class="right">
+      <% if current_user && current_employee %>
+       <ul>
+        <li class="has-dropdown">
+         <%= link_to full_name(current_employee), employee_path(current_employee) %>
+          <ul class="dropdown">
+            <li><%= link_to "Maschine ausgeben", new_employee_indexmachine_path(current_employee) %></li>
+            <li><%= link_to "Werkzeug ausgeben", new_employee_indextool_path(current_employee) %></li>  
+            <li><%= link_to "Abmelden", employee_session_path, method: :delete %></li>                  
+          </ul>
+        </li>
+      </ul>        
+      <% end %>
       <% if current_user %>
+        <% if current_employee.blank? %>  
         <li><%= link_to "Ausgabe", begin_path %></li>
-        <li><%= link_to "SignOut", session_path, method: :delete %></li>
+        <% end %>     
+        <li><%= link_to "Logout", session_path, method: :delete %></li>
       <% else %>
-      <li><%= link_to "SignIn", signin_path %></li>|      
+      <li><%= link_to "Login", signin_path %></li>     
       <% end %>
     </ul>
   </div>

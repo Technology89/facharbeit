@@ -1,6 +1,6 @@
 
 
-<h1>Listing Employees</h1>
+<h3>Mitarbeiter</h3>
 
 <table>
   <thead>
@@ -18,9 +18,9 @@
         <td><%= employee.vorname %></td>
         <td><%= employee.nachname %></td>
         <td><%= employee.personalnummer %></td>
-        <td><%= link_to 'Show', employee %></td>
-        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
-        <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "<i class='fi-eye icon-green'></i>".html_safe, employee %></td>
+        <td><%= link_to "<i class='fi-pencil icon-blue'></i>".html_safe, edit_employee_path(employee) %></td>
+        <td><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Employee', new_employee_path %>
+<%= link_to 'Neuen Mitarbeiter anlegen', new_employee_path %>

@@ -32,13 +32,13 @@
         <td><%= @machines.find_by(id: indexmachine.machine_id).hersteller %> <%= @machines.find_by(id:indexmachine.machine_id).modell %></td>
         <td><%= @machines.find_by(id: indexmachine.machine_id).barcode %></td>
         <td><%= bool_to_german(indexmachine.ausgeliehen) %></td>
-        <td><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee_indexmachine_path(@employee.id, indexmachine.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><center><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee_indexmachine_path(@employee.id, indexmachine.id), method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <p>
-<%= link_to 'Neue Maschine ausleihen', new_employee_indexmachine_path(@employee.id) %>
+<%= link_to 'Neue Maschine ausgeben', new_employee_indexmachine_path(@employee.id) %>
 </p>
 <h1>Werkzeug von <%= @employee.vorname %> <%= @employee.nachname %></h1>
 
@@ -49,7 +49,8 @@
       <th>Ausgegeben von</th>
       <th>Werkzeug</th>
       <th>Barcode</th>
-      <th></th>
+      <th>Rückgabe</th>
+      <th>Verlust</th>
     </tr>
   </thead>
 
@@ -60,14 +61,15 @@
         <td><%= indextool.ausgegeben_von %></td>
         <td><%= @tools.find_by_id(indextool.tool_id).hersteller %> <%= @tools.find_by_id(indextool.tool_id).modell %></td>
         <td><%= @tools.find_by_id(indextool.tool_id).barcode %></td>        
-        <td><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee_indextool_path(@employee.id, indextool.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><center><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee_indextool_path(@employee.id, indextool.id), method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
+        <td><center><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee_indextool_path(@employee.id, indextool.id), method: :remove, data: { confirm: 'Are you sure?' } %></center></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <p>
-<%= link_to 'Neues Werkzeug ausleihen', new_employee_indextool_path(@employee.id) %>
+<%= link_to 'Neues Werkzeug ausgeben', new_employee_indextool_path(@employee.id) %>
 </p>
 
 <%= link_to 'Bearbeiten', edit_employee_path(@employee) %> |
-<%= link_to 'Zurück', employees_path %>
+<%= link_to 'Zurück', :back %>
