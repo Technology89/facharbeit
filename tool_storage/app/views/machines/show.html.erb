@@ -1,5 +1,3 @@
-<%= stylesheet_link_tag "print", media: "print" %>
-
 <p>
   <strong>Hersteller:</strong>
   <%= @machine.hersteller %>
@@ -12,17 +10,14 @@
 
 <p>
   <strong>Barcode:</strong>
-  <table class="printable">
+  <table>
     <tr>
-      <td class="printable"><%= image_tag("ean8.png")  %></td>
+      <td><%= image_tag("ean8.png")  %></td>
     </tr>
     <tr>
-      <td class="barcode printable"><center><%= @machine.barcode %></center></td>
+      <td><center><%= @machine.barcode %></center></td>
     </tr>
   </table>
-
-
-<%= link_to "print", "#", onclick: "printpage()" %>
 </p>
 
 <p>

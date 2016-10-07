@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resources :machines
   resources :tools
   resources :employees do
-    resources :indextools
+    resources :indextools do
+      member do
+        get 'remove'         
+      end
+    end
     resources :indexmachines
   end
   get 'signup' => 'users#new'

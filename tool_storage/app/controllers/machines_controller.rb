@@ -2,9 +2,9 @@ class MachinesController < ApplicationController
   require 'barby'
   require 'barby/barcode/ean_8'
   require 'barby/outputter/png_outputter'
-
-  before_action :set_machine, only: [:show, :edit, :update, :destroy]
   before_action :require_signin
+  before_action :set_machine, only: [:show, :edit, :update, :destroy]
+  
   # GET /machines
   # GET /machines.json
   def index

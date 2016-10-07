@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
-before_action :set_employee, only: [:show, :edit, :update, :destroy]
 before_action :require_signin
+before_action :set_employee, only: [:show, :edit, :update, :destroy]
 before_action :require_correct_employee, only: [:edit, :update, :destroy]
 before_action :set_machines, only: [:show] 
 before_action :set_tools, only: [:show] 

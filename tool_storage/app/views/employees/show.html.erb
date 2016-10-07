@@ -1,15 +1,4 @@
-<p>
-  <strong>Vorname:</strong>
-  <%= @employee.vorname %>
-<br>
-  <strong>Nachname:</strong>
-  <%= @employee.nachname %>
-<br>
-  <strong>Personalnummer:</strong>
-  <%= @employee.personalnummer %>
-</p>
-
-<h1>Maschinen von <%= @employee.vorname %> <%= @employee.nachname %></h1>
+<h3>Maschinen von <%= full_name(@employee) %></h3>
 
 <table>
   <thead>
@@ -40,7 +29,7 @@
 <p>
 <%= link_to 'Neue Maschine ausgeben', new_employee_indexmachine_path(@employee.id) %>
 </p>
-<h1>Werkzeug von <%= @employee.vorname %> <%= @employee.nachname %></h1>
+<h3>Werkzeug von <%= full_name(@employee) %></h3>
 
 <table>
   <thead>
@@ -61,8 +50,8 @@
         <td><%= indextool.ausgegeben_von %></td>
         <td><%= @tools.find_by_id(indextool.tool_id).hersteller %> <%= @tools.find_by_id(indextool.tool_id).modell %></td>
         <td><%= @tools.find_by_id(indextool.tool_id).barcode %></td>        
-        <td><center><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee_indextool_path(@employee.id, indextool.id), method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
-        <td><center><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee_indextool_path(@employee.id, indextool.id), method: :remove, data: { confirm: 'Are you sure?' } %></center></td>
+        <td><center><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee_indextool_path(@employee.id, indextool.id), method: :delete, data: { confirm: 'Sind sie sicher das sie den Eintrag löschen möchten?' } %></center></td>
+        <td><center><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, remove_employee_indextool_path(@employee.id, indextool.id), data: { confirm: 'Sind sie sicher das sie den Eintrag löschen möchten?' } %></center></td>
       </tr>
     <% end %>
   </tbody>
@@ -71,5 +60,4 @@
 <%= link_to 'Neues Werkzeug ausgeben', new_employee_indextool_path(@employee.id) %>
 </p>
 
-<%= link_to 'Bearbeiten', edit_employee_path(@employee) %> |
 <%= link_to 'Zurück', :back %>

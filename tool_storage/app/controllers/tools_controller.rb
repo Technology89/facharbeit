@@ -2,9 +2,8 @@ class ToolsController < ApplicationController
   require 'barby'
   require 'barby/barcode/ean_8'
   require 'barby/outputter/png_outputter'
-
-  before_action :set_tool, only: [:show, :edit, :update, :destroy]
   before_action :require_signin
+  before_action :set_tool, only: [:show, :edit, :update, :destroy]
   # GET /tools
   # GET /tools.json
   def index

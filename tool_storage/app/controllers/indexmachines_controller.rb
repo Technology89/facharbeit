@@ -3,30 +3,13 @@ class IndexmachinesController < ApplicationController
 before_action :require_signin
 before_action :set_employee
 before_action :set_machines
+before_action :require_employee, only: [:new]
 
-  # GET /indexmachines
-  # GET /indexmachines.json
-  def index
-    @indexmachines = @employee.indexmachines
-  end
-
-  # GET /indexmachines/1
-  # GET /indexmachines/1.json
-  def show
-  end
-
-  # GET /indexmachines/new
   def new
     @indexmachine = @employee.indexmachines.new(employee_id: @employee.id, ausgegeben_am: Date.current())
     
   end
 
-  # GET /indexmachines/1/edit
-  def edit
-  end
-
-  # POST /indexmachines
-  # POST /indexmachines.json
   def create
     machine = Machine.find_by(barcode: params[:barcode][0...7])
 
@@ -56,14 +39,6 @@ before_action :set_machines
     end 
   end
 
-  # PATCH/PUT /indexmachines/1
-  # PATCH/PUT /indexmachines/1.json
-  def update
-    
-  end
-
-  # DELETE /indexmachines/1
-  # DELETE /indexmachines/1.json
   def destroy
     @indexmachine = Indexmachine.find(params[:id])
     machine = Machine.find_by(id: @indexmachine.machine_id)
@@ -74,7 +49,6 @@ before_action :set_machines
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_employee
       @employee = Employee.find(params[:employee_id])
     end
@@ -83,8 +57,6 @@ before_action :set_machines
       @machines = Machine.all
     end
 
-
-    # Never trust parameters from the scary internet, only allow the white list through.
     def indexmachine_params
       params.require(:indexmachine).permit(:ausgeliehen, :ausgegeben_von,:ausgegeben_am, :employee_id, :machine_id)
     end

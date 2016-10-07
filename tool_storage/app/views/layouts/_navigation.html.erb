@@ -50,22 +50,22 @@
       <% if current_user && current_employee %>
        <ul>
         <li class="has-dropdown">
-         <%= link_to full_name(current_employee), employee_path(current_employee) %>
+         <%= link_to full_name_with_nr(current_employee), employee_path(current_employee) %>
           <ul class="dropdown">
             <li><%= link_to "Maschine ausgeben", new_employee_indexmachine_path(current_employee) %></li>
             <li><%= link_to "Werkzeug ausgeben", new_employee_indextool_path(current_employee) %></li>  
-            <li><%= link_to "Abmelden", employee_session_path, method: :delete %></li>                  
+            <li><%= link_to "Kartei schließen", employee_session_path, method: :delete %></li>                  
           </ul>
         </li>
       </ul>        
       <% end %>
       <% if current_user %>
         <% if current_employee.blank? %>  
-        <li><%= link_to "Ausgabe", begin_path %></li>
+        <li><%= link_to "Kartei öffnen", begin_path %></li>
         <% end %>     
-        <li><%= link_to "Logout", session_path, method: :delete %></li>
+        <li><%= link_to "Ausloggen", session_path, method: :delete %></li>
       <% else %>
-      <li><%= link_to "Login", signin_path %></li>     
+      <li><%= link_to "Einloggen", signin_path %></li>     
       <% end %>
     </ul>
   </div>

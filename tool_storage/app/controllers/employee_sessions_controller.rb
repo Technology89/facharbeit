@@ -1,12 +1,12 @@
 class EmployeeSessionsController < ApplicationController
-		def new
+	def new
 
 	end
 
 	def create
 		if employee = Employee.setup(params[:personalnummer])
 			session[:employee_id] = employee.id
-			flash[:notice] = "Werkzeuge für #{employee.vorname} #{employee.nachname}"
+			session[:time_now] = Time.now.utc
 			redirect_to employee_url(employee.id)
 			session[:intended_url] = nil 
 		else
