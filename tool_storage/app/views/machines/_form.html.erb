@@ -1,20 +1,34 @@
-<%= form_for(@machine) do |f| %>
-  <div class="field">
-    <%= f.label :hersteller %><br>
-    <%= f.text_field :hersteller %>
+<%= render "shared/errors", object: @machine %>
+<%= form_for(@machine, data: {abide: ''}) do |f| %>  
+  <%= f.hidden_field :barcode %>
+  <div class="row">
+    <div class="small-3 medium-3 large-3 columns">
+      <%= f.label :hersteller %>
+    </div>
+    <div class="small-9 medium-9 large-9 columns">
+      <%= f.text_field :hersteller, required: '', pattern: 'long_field' %>
+      <%= content_tag(:small, "Bitte geben sie einen gültigen Hersteller ein", class: "error") %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :modell %><br>
-    <%= f.text_field :modell %>
+  <div class="row">
+    <div class="small-3 medium-3 large-3 columns">
+      <%= f.label :modell %>
+    </div>
+    <div class="small-9 medium-9 large-9 columns">
+      <%= f.text_field :modell, required: '', pattern: 'long_field' %>
+      <%= content_tag(:small, "Bitte geben sie einen gültiges Modell ein", class: "error") %>
+    </div>
   </div>
-
-<%= f.hidden_field :barcode %>
-
+  <br>
   <div class="actions">
-    <% if params[:action] == "new" %>
-      <%= f.submit "Anlegen" %>
-    <% else %>
-      <%= f.submit "Bearbeiten" %>
-    <% end %>
+    <div class="row">
+      <div class="small-12 medium-12 large-12 columns">
+        <% if params[:action] == "edit" %>
+          <%= f.submit "Bearbeiten", class: 'button small radius' %>          
+        <% else %>
+          <%= f.submit "Anlegen", class: 'button small radius' %>
+        <% end %> 
+      </div>
+    </div>
   </div>
 <% end %>

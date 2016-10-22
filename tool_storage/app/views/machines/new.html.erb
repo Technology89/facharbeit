@@ -1,5 +1,14 @@
-<h3>Neue Maschine anlegen</h3>
-
-<%= render 'form' %>
-
-<%= link_to 'Zurück', :back %>
+<div class="mainpart">
+	<h3>Neue Maschine anlegen</h3>
+	<hr>
+	<%= render "shared/errors", object: @machine %>
+	<%= render 'form' %>
+</div>
+<div class="footer">
+	<div class="row">
+		<div class="small-12 medium-12 large-12 columns">
+			<%= link_to 'Übersicht', machines_path, class: 'button small radius' %>
+			<%= link_to 'Zurück', :back, class: 'button small radius' %>
+		</div>
+	</div>
+</div>

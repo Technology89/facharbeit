@@ -7,9 +7,8 @@ class SessionsController < ApplicationController
 		if user = User.authenticate(params[:name], params[:password])
 			session[:user_id] = user.id
 			redirect_to new_employee_session_url
-		else
-			flash.now[:alert] = "Name nicht gefunden oder falsches Passwort"
-			render :new
+		else			
+			redirect_to new_session_url, alert: "Name wurde nicht gefunden oder das Passwort ist falsch"
 		end
 	end	
 

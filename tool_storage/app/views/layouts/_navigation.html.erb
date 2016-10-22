@@ -33,7 +33,8 @@
        <%= link_to "Werkzeuge", tools_path %>
         <ul class="dropdown">
           <li><%= link_to "Neues Werkzeug", new_tool_path %></li>
-          <li><%= link_to "Nachbestellung", reorder_path %></li>                    
+          <li><%= link_to "Nachbestellung", reorder_path %></li> 
+          <li><%= link_to "Auffüllen", refill_path %></li>                    
         </ul>
       </li>
     </ul>
@@ -41,7 +42,8 @@
       <li class="has-dropdown">
        <%= link_to "Maschinen", machines_path %>
         <ul class="dropdown">
-          <li><%= link_to "Neue Maschine", new_machine_path %></li>                   
+          <li><%= link_to "Neue Maschine", new_machine_path %></li>   
+          <li><%= link_to "Überfällig", overdue_path %></li>                    
         </ul>
       </li>
     </ul>

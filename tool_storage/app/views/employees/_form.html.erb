@@ -1,33 +1,42 @@
-<%= form_for(@employee) do |f| %>
-  <% if @employee.errors.any? %>
-    <div id="error_explanation">
-      <h2> Es gab folgende Fehler <%= @employee.errors.count %> beim speichern:</h2>
-
-      <ul>
-      <% @employee.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= render "shared/errors", object: @employee %>
+<%= form_for(@employee, data: {abide: ''}) do |f| %>
+  <div class="row">
+    <div class="small-3 medium-3 large-3 columns">
+      <%= f.label :vorname %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :vorname %><br>
-    <%= f.text_field :vorname %>
+    <div class="small-9 medium-9 large-9 columns">
+      <%= f.text_field :vorname, required: '', pattern: 'short_field' %>
+      <%= content_tag(:small, "Bitte geben sie einen gültigen Vornamen ein", class: "error") %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :nachname %><br>
-    <%= f.text_field :nachname %>
+  <div class="row">
+    <div class="small-3 medium-3 large-3 columns">
+      <%= f.label :nachname %>
+    </div>
+    <div class="small-9 medium-9 large-9 columns">
+      <%= f.text_field :nachname, required: '', pattern: 'short_field' %>
+      <%= content_tag(:small, "Bitte geben sie einen gültigen Nachnamen ein", class: "error") %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :personalnummer %><br>
-    <%= f.number_field :personalnummer %>
+  <div class="row">
+    <div class="small-3 medium-3 large-3 columns">
+      <%= f.label :personalnummer %>
+    </div>
+    <div class="small-9 medium-9 large-9 columns">
+      <%= f.number_field :personalnummer, required: '', pattern: 'employee_number' %>
+      <%= content_tag(:small, "Bitte geben sie eine gültige Personalnummer ein", class: "error") %>
+    </div>
   </div>
   <div class="actions">
-    <% if params[:action] == "new" %>
-      <%= f.submit "Anlegen" %>
-    <% else %>
-      <%= f.submit "Bearbeiten" %>
-    <% end %>
-  </div>
+    <div class="row">
+      <div class="small-12 medium-12 large-12 columns">
+        <% if params[:action] == "edit" %>
+          <%= f.submit "Bearbeiten", class: 'button small radius' %>          
+        <% else %>
+          <%= f.submit "Anlegen", class: 'button small radius' %>
+        <% end %> 
+      </div>
+    </div>  
+  </div> 
 <% end %>
+ 

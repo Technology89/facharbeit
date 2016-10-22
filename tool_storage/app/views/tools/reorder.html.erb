@@ -1,34 +1,44 @@
-<% if @tools_min.blank? %>
-  <p>
+<div class="mainpart">  
+  <% if @tools_min.blank? %>    
     <h3>Zur Zeit gibt es keine Nachbestellungen</h3>
-  </p>
-<% else %>
-<p>
-  <h3>Werkzeuge unter Mindestbestand</h3>
-</p>
-<table>
-  <thead>
-    <tr>
-      <th>Hersteller</th>
-      <th>Modell</th>
-      <th>Barcode</th>
-      <th>Lagerbestand</th>
-      <th>Mindestbestand</th>
-      <th>Anzahl ersatz</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @tools_min.order("barcode").each do |tool| %>
-    <tr>
-      <td><%= tool.hersteller %></td>
-      <td><%= tool.modell %></td>
-      <td><%= tool.barcode %></td>
-      <td><%= tool.lagerbestand %></td>
-      <td><%= tool.mindestbestand %></td>
-      <td><%= tool.anzahl_ersatz %></td>      
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<% end %>
+  <% else %>
+    <h3>Werkzeuge unter Mindestbestand</h3>
+    <hr>
+    <div class="row">
+      <div class="small-12 medium-12 large-12 columns">
+        <table>
+          <thead>
+            <tr>
+              <th>Hersteller</th>
+              <th>Modell</th>
+              <th>Barcode</th>
+              <th>Lagerbestand</th>
+              <th>Mindestbestand</th>
+              <th>Anzahl ersatz</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @tools_min.order("barcode").each do |tool| %>
+              <tr>
+                <td><%= tool.hersteller %></td>
+                <td><%= tool.modell %></td>
+                <td><%= tool.barcode %></td>
+                <td><%= tool.lagerbestand %></td>
+                <td><%= tool.mindestbestand %></td>
+                <td><%= tool.anzahl_ersatz %></td>      
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>    
+</div>
+<div class="footer">
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns"> 
+      <%= link_to 'Übersicht', tools_path, class: 'button small radius' %>         
+      <%= link_to 'Zurück', :back, class: 'button small radius' %>
+    </div>
+  </div>
+</div>

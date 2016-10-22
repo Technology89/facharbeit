@@ -1,29 +1,53 @@
-<%= form_for(@tool) do |f| %>
+<%= render "shared/errors", object: @tool %>
+<%= form_for(@tool, data: {abide: ''}) do |f| %>
   
   <%= f.hidden_field :barcode %>
   <%= f.hidden_field :anzahl_ersatz %>
-  <div class="field">
-    <%= f.label :hersteller %><br>
-    <%= f.text_field :hersteller %>
+  <div class="row">
+    <div class="small-3 medium-3 large-3 columns">
+      <%= f.label :hersteller %>
+    </div>
+    <div class="small-9 medium-9 large-9 columns">
+      <%= f.text_field :hersteller, required: '', pattern: 'long_field' %>
+      <%= content_tag(:small, "Bitte geben sie einen gültigen Hersteller ein", class: "error") %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :modell %><br>
-    <%= f.text_field :modell %>
+  <div class="row">
+    <div class="small-3 medium-3 large-3 columns">
+      <%= f.label :modell %>
+    </div>
+    <div class="small-9 medium-9 large-9 columns">
+      <%= f.text_field :modell, required: '', pattern: 'long_field' %>
+      <%= content_tag(:small, "Bitte geben sie einen gültiges Modell ein", class: "error") %>
+    </div>
   </div>
- 
-  <div class="field">
-    <%= f.label :lagerbestand %><br>
-    <%= f.number_field :lagerbestand %>
+  <div class="row">
+    <div class="small-3 medium-3 large-3 columns">
+      <%= f.label :lagerbestand %>
+    </div>
+    <div class="small-9 medium-9 large-9 columns">
+      <%= f.number_field :lagerbestand, required: '', pattern: 'number' %>
+      <%= content_tag(:small, "Bitte geben sie eine gültige Anzahl ein", class: "error") %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :mindestbestand %><br>
-    <%= f.number_field :mindestbestand %>
-  </div> 
+  <div class="row">
+    <div class="small-3 medium-3 large-3 columns">
+      <%= f.label :mindestbestand %>
+    </div>
+    <div class="small-9 medium-9 large-9 columns">
+      <%= f.number_field :mindestbestand, required: '', pattern: 'number' %>
+      <%= content_tag(:small, "Bitte geben sie eine gültige Anzahl ein", class: "error") %>
+    </div>
+  </div>
   <div class="actions">
-    <% if params[:action] == "new" %>
-      <%= f.submit "Anlegen" %>
-    <% else %>
-      <%= f.submit "Bearbeiten" %>
-    <% end %>
+    <div class="row">
+      <div class="small-12 medium-12 large-12 columns">
+        <% if params[:action] == "edit" %>
+          <%= f.submit "Bearbeiten", class: 'button small radius' %>          
+        <% else %>
+          <%= f.submit "Anlegen", class: 'button small radius' %>
+        <% end %> 
+      </div>
+    </div>
   </div>
 <% end %>

@@ -1,0 +1,49 @@
+<div class="mainpart">  
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">     
+      <% if @machines_overdue.blank? %>    
+        <h3>Zur Zeit sind keine Maschinen überfällig</h3>       
+      <% else %>
+        <h3>Überfällige Maschinen</h3>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 medium-12 large-12 columns">
+        <table>
+          <thead>
+            <tr>
+              <th>Hersteller</th>
+              <th>Modell</th>
+              <th>Barcode</th>
+              <th>Ausgeliehen an</th>
+              <th>Ausgeliehen am</th>
+              <th>Ausgeliehen seit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @machines_overdue.each do |machine| %>
+              <tr>
+                <td><%= @machines.find_by(id: machine.machine_id).hersteller %></td>
+                <td><%= @machines.find_by(id: machine.machine_id).modell %></td>
+                <td><%= @machines.find_by(id: machine.machine_id).barcode %></td>
+                <td><%= full_name_with_nr(@employees.find_by(id: machine.employee_id)) %></td>
+                <td><%= de_date(machine.ausgegeben_am) %></td>
+                <td><%= (Date.today - machine.ausgegeben_am).to_i %> Tagen</td>   
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+      <%= link_to 'Übersicht', machines_path, class: 'button small radius' %>     
+      <%= link_to 'Zurück', :back, class: 'button small radius' %>
+    </div>
+  </div>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929152134) do
+ActiveRecord::Schema.define(version: 20161020142533) do
 
   create_table "employees", force: :cascade do |t|
     t.string   "vorname"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20160929152134) do
   add_index "indexmachines", ["machine_id"], name: "index_indexmachines_on_machine_id"
 
   create_table "indextools", force: :cascade do |t|
-    t.boolean  "ausgeliehen"
     t.date     "ausgegeben_am"
     t.integer  "employee_id"
     t.integer  "tool_id"

@@ -1,0 +1,43 @@
+<div class="mainpart">  
+  <h3>Lagerbestand auffüllen</h3>
+  <hr>
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">     
+      
+      <%= form_tag(refill_path, data: {abide: ''}) do %>
+          <div class="row">
+            <div class="medium-3 columns">
+              <%= label_tag :refill, "Anzahl" %>
+            </div>
+            <div class="medium-9 columns">
+              <%= number_field_tag :refill, '', autofocus: true, required: '', pattern: 'number' %>
+              <%= content_tag(:small, "Bitte geben sie einen gültige Anzahl ein", class: "error") %>
+            </div>
+          </div> 
+          <div class="row">
+            <div class="medium-3 columns">
+              <%= label_tag :barcode %>
+            </div>
+            <div class="medium-9 columns">
+              <%= number_field_tag :barcode, '', autofocus: true, required: '', pattern: 'barcode_field' %>
+              <%= content_tag(:small, "Bitte geben sie einen gültigen Barcode ein", class: "error") %>
+            </div>
+          </div>
+          <br/>
+          <div class="row">
+            <div class="medium-12 columns">
+              <%= submit_tag "Auffüllen", class: 'button small radius' %>
+            </div>
+          </div>  
+        <% end %> 
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">  
+      <%= link_to 'Übersicht', tools_path, class: 'button small radius' %>    
+      <%= link_to 'Zurück', :back, class: 'button small radius' %>
+    </div>
+  </div>
+</div>

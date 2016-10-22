@@ -15,18 +15,21 @@
 
 //= require foundation
 //= require_tree .
+
 $(function() {
-  $(document).foundation();
+  $(document)
+  .foundation()
+  .foundation({
+	  abide: {
+	    patterns: {
+	      short_field: /^.{1,30}$/,
+	      employee_number: /^.{1,3}$/,
+	      barcode_field: /^.{7,8}$/,
+	      long_field: /^.{1,56}$/
+	    }
+	  }
+  });
 });
+
 //= require turbolinks
 
-// function printpage()
- // {
-//  window.print()
- // }
-
-function printpage() {
-    // Some logic determines which div should be printed...
-    // This example uses div3.
-    window.print();
-  }

@@ -1,16 +1,29 @@
-<h1>Login</h1>
-
-<%= form_tag(session_path) do %>
-	<p>
-		<%= label_tag :name %>
-		<%= text_field_tag :name, nil, autofocus: true %>
-	</p>
-	<p>
-		<%= label_tag :password %>
-		<%= password_field_tag :password %>
-	</p>
-	<p>
-		<%= submit_tag 'Einloggen' %>
-	</p>
-
-<% end %>
+<div class="mainpart">  
+	<h3>Login</h3>
+	<hr>
+	<%= form_tag(session_path, data: {abide: ''}) do %>
+		<div class="row">
+    	<div class="small-3 medium-3 large-3 columns">
+				<%= label_tag :name %>
+			</div>
+			<div class="small-9 medium-9 large-9 columns">
+				<%= text_field_tag :name, nil, autofocus: true, required: '', pattern: 'short_field' %>
+				<%= content_tag(:small, "Bitte geben sie einen gültigen Namen ein", class: "error") %>
+			</div>
+		</div>
+		<div class="row">
+    	<div class="small-3 medium-3 large-3 columns">
+				<%= label_tag :password %>
+			</div>
+			<div class="small-9 medium-9 large-9 columns">
+				<%= password_field_tag :password, required: '', pattern: 'long_field' %>
+				<%= content_tag(:small, "Bitte geben sie ein gültiges Passwort ein", class: "error") %>
+			</div>
+		</div>		
+		<div class="row">
+			<div class="small-12 medium-12 large-12 columns">
+				<%= submit_tag 'Einloggen', class: 'button small radius' %>
+			</div>
+		</div>
+	<% end %>
+</div>

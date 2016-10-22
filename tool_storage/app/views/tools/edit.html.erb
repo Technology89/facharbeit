@@ -1,6 +1,15 @@
-<h3>Werkzeug bearbeiten</h3>
-
-<%= render 'form' %>
-
-<%= link_to 'Anzeigen', @tool %> |
-<%= link_to 'Zurück', :back %>
+<div class="mainpart">
+	<h3>Werkzeug bearbeiten</h3>
+	<hr>
+	<%= render 'form' %>
+</div>
+<div class="footer">
+	<div class="row">
+		<div class="small-12 medium-12 large-12 columns">
+			<%= link_to 'Anzeigen', @tool, class: 'button small radius' %>
+			<%= link_to 'Löschen', @tool, method: :delete, data: { confirm: 'Sind sie sicher das sie diesen Eintrag löschen möchten?' }, class: 'button small radius' %>
+			<%= link_to 'Übersicht', tools_path, class: 'button small radius' %>    
+			<%= link_to 'Zurück', :back, class: 'button small radius' %>
+		</div>
+	</div>
+</div>

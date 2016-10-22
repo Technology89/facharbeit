@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   
   resources :machines
-  resources :tools
+  resources :tools 
   resources :employees do
     resources :indextools do
       member do
@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get 'signin' => 'sessions#new'
   get 'begin' => 'employee_sessions#new'
   get 'reorder' => 'tools#reorder'
+  get 'overdue' => 'machines#overdue'
+  post 'refill' => 'tools#save_refill'
+  get 'refill' => 'tools#refill'
 
   root "users#index"
   resources :users

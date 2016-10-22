@@ -1,6 +1,14 @@
-<h3>Mitarbeiter bearbeiten</h3>
-
-<%= render 'form' %>
-
-<%= link_to 'Anzeigen', @employee %> |
-<%= link_to 'Zurück', :back %>
+<div class="mainpart">
+	<h3>Mitarbeiter bearbeiten</h3>
+	<hr>
+	<%= render 'form' %>
+</div>
+<div class="footer">
+	<div class="row">
+		<div class="small-12 medium-12 large-12 columns">
+			<%= link_to 'Anzeigen', @employee, class: 'button small radius' %>
+			<%= link_to 'Übersicht', employees_path, class: 'button small radius' %>
+			<%= link_to 'Zurück', :back, class: 'button small radius' %>
+		</div>
+	</div>
+</div>

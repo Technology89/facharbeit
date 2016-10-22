@@ -1,27 +1,32 @@
-<%= form_for [@employee, @indexmachine] do |f| %>
+<%= render "shared/errors", object: @indexmachine %>
+<%= form_for [@employee, @indexmachine], data: {abide: ''} do |f| %>
 
     <%= f.hidden_field :employee_id %>
-      <%= f.hidden_field :ausgegeben_am %>
-      <%= f.hidden_field :ausgegeben_von %>
+    <%= f.hidden_field :ausgegeben_am %>
+    <%= f.hidden_field :ausgegeben_von %>
+
     <div class="row">
       <div class="medium-3 columns">
-       <%= label_tag :barcode %>
+        <%= f.label "Ausleihen" %>
       </div>
       <div class="medium-9 columns">
-       <%= text_field_tag :barcode, '', autofocus: true %>
-      </div>
-    </div>  
-     <div class="row">
-      <div class="medium-3 columns">
-       <%= f.label "Ausleihen" %>
-      </div>
-      <div class="medium-9 columns">
-       <%= f.check_box :ausgeliehen %>
+        <%= f.check_box :ausgeliehen %>
       </div>
     </div> 
-      <div class="row">
+    <br/>
+    <div class="row">
+      <div class="medium-3 columns">
+        <%= label_tag :barcode %>
+      </div>
+      <div class="medium-9 columns">
+        <%= number_field_tag :barcode, '', autofocus: true, required: '', pattern: 'barcode_field' %>
+        <%= content_tag(:small, "Bitte geben sie einen gültigen Barcode ein", class: "error") %>
+      </div>
+    </div>      
+    <br/>
+    <div class="row">
       <div class="medium-12 columns">
-        <%= f.submit "Ausgeben" %>
+        <%= f.submit "Ausgeben", class: 'button small radius' %>
       </div>
     </div>  
   <% end %> 

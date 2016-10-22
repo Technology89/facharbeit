@@ -1,40 +1,52 @@
-<p>
-  <strong>Hersteller:</strong>
-  <%= @tool.hersteller %>
-</p>
+<div class="mainpart">  
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">     
+      <p>
+        <strong>Hersteller:</strong>
+        <%= @tool.hersteller %>
+      </p>
 
-<p>
-  <strong>Modell:</strong>
-  <%= @tool.modell %>
-</p>
+      <p>
+        <strong>Modell:</strong>
+        <%= @tool.modell %>
+      </p>
 
-<p>
-  <strong>Barcode:</strong>
-  <table>
-    <tr>
-      <td><%= image_tag("ean8.png")  %></td>
-    </tr>
-    <tr>
-      <td class="white-back"><center><%= @tool.barcode %></center></td>
-    </tr>
-  </table>
-</p>
+      <p>
+        <strong>Barcode:</strong>
+        <table>
+          <tr>
+            <td><%= image_tag("ean8.png")  %></td>
+          </tr>
+          <tr>
+            <td class="white-back"><center><%= @tool.barcode %></center></td>
+          </tr>
+        </table>
+      </p>
 
-<p>
-  <strong>Lagerbestand:</strong>
-  <%= @tool.lagerbestand %>
-</p>
+      <p>
+        <strong>Lagerbestand:</strong>
+        <%= @tool.lagerbestand %>
+      </p>
 
-<p>
-  <strong>Mindestbestand:</strong>
-  <%= @tool.mindestbestand %>
-</p>
+      <p>
+        <strong>Mindestbestand:</strong>
+        <%= @tool.mindestbestand %>
+      </p>
 
-<p>
-  <strong>Anzahl ersatz:</strong>
-  <%= @tool.anzahl_ersatz %>
-</p>
-
-<%= link_to 'Bearbeiten', edit_tool_path(@tool) %> |
-<%= link_to 'Löschen', @tool, method: :delete, data: { confirm: 'Sind sie sicher das sie diesen Eintrag löschen möchten?' } %> |
-<%= link_to 'Zurück', :back %>
+      <p>
+        <strong>Anzahl ersatz:</strong>
+        <%= @tool.anzahl_ersatz %>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+      <%= link_to 'Bearbeiten', edit_tool_path(@tool), class: 'button small radius' %>
+      <%= link_to 'Löschen', @tool, method: :delete, data: { confirm: 'Sind sie sicher das sie diesen Eintrag löschen möchten?' }, class: 'button small radius' %>
+      <%= link_to 'Übersicht', tools_path, class: 'button small radius' %>    
+      <%= link_to 'Zurück', :back, class: 'button small radius' %>
+    </div>
+  </div>
+</div>

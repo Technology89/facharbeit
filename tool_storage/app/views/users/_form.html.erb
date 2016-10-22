@@ -1,18 +1,34 @@
-<%= form_for(@user) do |f| %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
+<%= render "shared/errors", object: @user %>
+<%= form_for(@user, data: {abide: ''}) do |f| %>
+  <% if params[:action] == "new" %>
+    <div class="row">
+      <div class="small-3 medium-3 large-3 columns">
+        <%= f.label :name, "Benutzername" %>
+      </div>
+      <div class="small-9 medium-9 large-9 columns">
+        <%= f.text_field :name, required: '', pattern: 'short_field' %>
+        <%= content_tag(:small, "Bitte geben sie einen gültigen Benutzernamen ein", class: "error") %>
+      </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="small-3 medium-3 large-3 columns">
+      <%= f.label :password, "Passwort" %>
+    </div>
+    <div class="small-9 medium-9 large-9 columns">
+      <%= f.password_field :password, required: '', pattern: 'alpha_numeric' %>
+      <%= content_tag(:small, "Bitte geben sie einen gültiges Passwort ein", class: "error") %>
+    </div>
   </div>
   <div class="actions">
-     <% if params[:action] == "new" %>
-      <%= f.submit "Anlegen" %>
-    <% else %>
-      <%= f.submit "Bearbeiten" %>
-    <% end %>
+    <div class="row">
+      <div class="small-12 medium-12 large-12 columns">
+        <% if params[:action] == "new" %>
+          <%= f.submit "Anlegen", class: 'button small radius' %>
+        <% else %>
+          <%= f.submit "Bearbeiten", class: 'button small radius' %>
+        <% end %>
+      </div>
+    </div>
   </div>
 <% end %>

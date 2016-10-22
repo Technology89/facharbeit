@@ -1,24 +1,42 @@
-<h3>Benutzer</h3>
+<div class="mainpart">
+  <h3>Benutzer</h3>
+  <hr>
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+      <% unless @users.blank? %>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= user.name %></td>
+                <td><% if user.name == current_user.name %><%= link_to "<i class='fi-pencil icon-blue'></i>".html_safe, edit_user_path(user) %><% end %></td>
+                <td><% unless user.id == current_user.id %><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, user, method: :delete, data: { confirm: 'Sind sie sicher?' } %><% end %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+      <%= link_to 'Neuen Benutzer anlegen', new_user_path, class: 'button small radius' %>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+      <%= link_to 'Zurück', :back, class: 'button small radius' %>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><% if user.name == current_user.name %><%= link_to "<i class='fi-pencil icon-blue'></i>".html_safe, edit_user_path(user) %><% end %></td>
-        <td><% if user.id == current_user.id %><% else %><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, user, method: :delete, data: { confirm: 'Are you sure?' } %><% end %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'Neuen Benutzer anlegen', new_user_path %>

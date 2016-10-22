@@ -1,4 +1,13 @@
-<h3>Neue Maschine ausgeben an <%= @employee.vorname %> <%= @employee.nachname %></h3>
-
-<%= render 'form' %>
-
+<div class="mainpart">
+	<h3>Neue Maschine an <%= full_name(@employee) %> ausgeben </h3>
+	<hr>
+	<%= render 'form' %>
+</div>
+<div class="footer">
+	<div class="row">
+		<div class="small-12 medium-12 large-12 columns">
+			<%= link_to 'Übersicht', employee_path(@employee), class: 'button small radius' %>
+			<%= link_to 'Zurück', :back, class: 'button small radius' %>
+		</div>
+	</div>
+</div>

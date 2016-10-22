@@ -14,4 +14,9 @@ module ApplicationHelper
 	def full_name_with_nr(var)
 		var.vorname + " " + var.nachname + " " + var.personalnummer.to_s
 	end
+
+	def de_date(date)
+		date.strftime("%d.%m.%Y")
+	end
+
 end

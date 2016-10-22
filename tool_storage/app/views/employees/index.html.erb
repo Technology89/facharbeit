@@ -1,29 +1,44 @@
-<h3>Mitarbeiter</h3>
+<div class="mainpart">  
+  <h3>Mitarbeiter</h3>
+  <hr>
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+      <% unless @employees.blank? %>
+      <table>
+        <thead>
+          <tr>
+            <th>Vorname</th>
+            <th>Nachname</th>
+            <th>Personalnummer</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Vorname</th>
-      <th>Nachname</th>
-      <th>Personalnummer</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @employees.each do |employee| %>
-      <tr>
-        <td><%= employee.vorname %></td>
-        <td><%= employee.nachname %></td>
-        <td><%= employee.personalnummer %></td>
-        <td><%= link_to "<i class='fi-eye icon-green'></i>".html_safe, employee %></td>
-        <td><%= link_to "<i class='fi-pencil icon-blue'></i>".html_safe, edit_employee_path(employee) %></td>
-        <td><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Neuen Mitarbeiter anlegen', new_employee_path %>
+        <tbody>
+          <% @employees.each do |employee| %>
+            <tr>
+              <td><%= employee.vorname %></td>
+              <td><%= employee.nachname %></td>
+              <td><%= employee.personalnummer %></td>
+              <td><%= link_to "<i class='fi-pencil icon-blue'></i>".html_safe, edit_employee_path(employee) %></td>
+              <td><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+      <%= link_to 'Neuen Mitarbeiter anlegen', new_employee_path, class: 'button small radius' %>
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+      <%= link_to 'Zurück', :back, class: 'button small radius' %>
+    </div>
+  </div>
+</div>

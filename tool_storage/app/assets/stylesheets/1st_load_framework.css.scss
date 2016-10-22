@@ -1,4 +1,4 @@
-// import the CSS framework
+// Anpassungen Topbar
 $topbar-bg: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(109,179,242,1) 4%,rgba(84,163,238,1) 50%,rgba(54,144,240,1) 51%,rgba(30,105,222,1) 96%,rgba(0,0,0,1) 100%);
 $topbar-link-bg: $topbar-bg;
 $topbar-dropdown-bg: $topbar-bg;
@@ -9,25 +9,22 @@ $topbar-link-color: #ffffff;
 $topbar-link-color-hover: #ffffff;
 $topbar-link-color-active: #ffffff;
 $topbar-link-color-active-hover: #ffffff;
+$hr-border-color: #bababa;
 
+
+// import the CSS framework
 @import "foundation";
 @import "foundation-icons";
 
-// override for the 'Home' navigation link
-.top-bar .name {
-  font-size: rem-calc(13);
-  line-height: 45px; }
-
- .top-bar .name a {
-  font-weight: normal;
-  color: black;
-  padding: 0 15px;
-  
- }
-
-
-
-
+button.radius, .button.radius {
+  display: inline;
+  padding: 5px;
+  font-color: white;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.button.radius:visited, button.radius:visited {
+  color: white;
+}
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create mixins using Foundation classes
 @mixin twelve-columns {
@@ -58,7 +55,7 @@ $topbar-link-color-active-hover: #ffffff;
 // to make views framework-neutral
 main {
   @include twelve-columns;
-  background-color: #ffffff;
+  background-color: white;
   }
 section {
   @extend .row;
@@ -94,4 +91,34 @@ section {
 
 .center {
   align: center;
+}
+
+div.mainpart {
+  width: 100%;  
+  padding: 15px;
+  margin-right: 10px;
+  margin-top: 15px;
+  background-color: #f2f2f2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+div.error_box {
+  width: 100%;  
+  padding: 10px;
+  margin-right: 10px;
+  margin-top: 15px;
+  background-color: #f2f2f2;
+  color: red;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+div.error_box h4 {
+  color: red;
+}
+div.footer {
+  text-align: right;
+  width: 100%;  
+  padding: 15px;
+  margin-right: 10px;
+  margin-top: 15px;
+  background-color: #f2f2f2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

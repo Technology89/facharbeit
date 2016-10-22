@@ -1,9 +1,6 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_action :watch_session
-  
+  before_action :watch_session  
 
   def current_user
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -34,7 +31,7 @@ class ApplicationController < ActionController::Base
     else
       employee = current_employee
       a = Time.now.utc - session[:time_now].to_time(:utc)
-      if a > 10
+      if a > 10000
         session[:employee_id] = nil
         redirect_to new_employee_session_url, notice: "Aufgrund von Zeitüberschreitung wurde die Kartei von #{employee.vorname} #{employee.nachname} geschlossen"
       else

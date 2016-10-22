@@ -5,35 +5,36 @@ before_action :set_employee
 before_action :require_employee
 
   def new
-    @indextool = @employee.indextools.new(employee_id: @employee.id, ausgegeben_am: Date.current())
+    @indextool = @employee.indextools.new(employee_id: @employee.id, ausgegeben_am: Date.current(), ausgegeben_von: current_user.name)
   end
 
   def create
     tool = Tool.find_by(barcode: params[:barcode][0...7])
-    if tool == nil
-      flash[:alert] = "Barcode nicht gefunden"
-      redirect_to new_employee_indextool_url(@employee.id)
-    else
-      a = @employee.indextools.where(tool_id: tool.id)
-      if a.blank?
-        params[:indextool][:ausgegeben_am] = Date.today
-        params[:indextool][:tool_id] = tool.id
-        params[:indextool][:ausgegeben_von] = current_user.name
-        @indextool = Indextool.new(indextool_params)
-        if @indextool.save
+    if tool.lagerbestand <= 0
+      redirect_to new_employee_indextool_url(@employee.id), alert: "Der Lagerbestand von #{tool.hersteller} #{tool.modell} ist auf 0. Bitte erst auffüllen"
+    else  
+      if tool == nil
+        redirect_to new_employee_indextool_url(@employee.id), alert: "Barcode nicht gefunden"
+      else
+        a = @employee.indextools.where(tool_id: tool.id)
+        if a.blank?
+          params[:indextool][:tool_id] = tool.id
+          @indextool = Indextool.new(indextool_params)
+          if @indextool.save
+            tool.lagerbestand -= 1
+            tool.save
+              redirect_to employee_path(@employee.id), notice: "#{tool.hersteller} #{tool.modell} wurde zur Kartei von #{@employee.vorname} #{@employee.nachname} hinzugefügt"           
+          else
+            render :new, alert: "Fehler beim Speichern!"  
+          end 
+        else
+          tool.anzahl_ersatz += 1
           tool.lagerbestand -= 1
           tool.save
-            redirect_to new_employee_indextool_path(@employee.id), notice: "#{tool.hersteller} #{tool.modell} wurde zur Werkzeugkartei hinzugefügt"            
-        else
-          render :new, notice: "Fehler beim Speichern!"  
-        end 
-      else
-        tool.anzahl_ersatz += 1
-        tool.lagerbestand -= 1
-        tool.save
-          redirect_to new_employee_indextool_path(@employee.id), notice: "#{tool.hersteller} #{tool.modell} wurde als Ersatz eingetragen"
-      end      
-    end
+            redirect_to employee_path(@employee.id), notice: "#{tool.hersteller} #{tool.modell} wurde auf der Kartei von #{@employee.vorname} #{@employee.nachname} als Ersatz eingetragen"
+        end      
+      end
+    end  
   end
   
   def destroy    
