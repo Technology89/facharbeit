@@ -6,11 +6,11 @@ class ToolsController < ApplicationController
   before_action :set_tool, only: [:show, :edit, :update, :destroy]
   
   def index
-    @tools = Tool.all
+    @tools = Tool.all.order("hersteller ASC").order("modell ASC").order("barcode ASC")
   end
 
   def reorder
-    @tools_min = Tool.all.where("lagerbestand < mindestbestand")
+    @tools_min = Tool.all.where("lagerbestand < mindestbestand").order("hersteller ASC").order("modell ASC")
   end
   
   def show
@@ -75,11 +75,9 @@ class ToolsController < ApplicationController
   end
   
   def destroy
+    tool = @tool
     @tool.destroy
-    respond_to do |format|
-      format.html { redirect_to tools_url, notice: 'Tool was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      redirect_to tools_url, notice: "#{tool.hersteller} #{tool.modell} wurde erfolgreich gelöscht"
   end
 
   private

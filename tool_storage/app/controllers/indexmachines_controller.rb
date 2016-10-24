@@ -27,7 +27,7 @@ before_action :require_employee, only: [:new]
           redirect_to new_employee_indexmachine_url(@employee.id), alert: "Fehler beim speichern!" 
         end  
       else
-        redirect_to new_employee_indexmachine_url(@employee.id), alert: "Machine bereits ausgeliehen"
+        redirect_to new_employee_indexmachine_url(@employee.id), alert: "Maschine bereits ausgeliehen"
       end
     end 
   end

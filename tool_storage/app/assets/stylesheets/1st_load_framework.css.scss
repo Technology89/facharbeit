@@ -9,13 +9,18 @@ $topbar-link-color: #ffffff;
 $topbar-link-color-hover: #ffffff;
 $topbar-link-color-active: #ffffff;
 $topbar-link-color-active-hover: #ffffff;
+
+// Anpassung Horizontal-Row
 $hr-border-color: #bababa;
 
+//Anpassung der Breite des Grid auf Full-HD
+$row-width: rem-calc(1080);
 
 // import the CSS framework
 @import "foundation";
 @import "foundation-icons";
 
+//Anpassung der Buttons
 button.radius, .button.radius {
   display: inline;
   padding: 5px;
@@ -25,6 +30,7 @@ button.radius, .button.radius {
 .button.radius:visited, button.radius:visited {
   color: white;
 }
+
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create mixins using Foundation classes
 @mixin twelve-columns {
@@ -61,6 +67,8 @@ section {
   @extend .row;
   margin-top: 20px;
   }
+
+// Foundation Icons färben
 .icon-red {
   color: red;
   font-size: 1.2em;
@@ -79,6 +87,7 @@ section {
   background-color: white;
 }
 
+// Anpassung Header
 .header {
   width: 100%;
   background-color: white;
@@ -93,6 +102,7 @@ section {
   align: center;
 }
 
+// Anpassung Seitenaufbau
 div.mainpart {
   width: 100%;  
   padding: 15px;
@@ -101,6 +111,17 @@ div.mainpart {
   background-color: #f2f2f2;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+div.footer {
+  text-align: right;
+  width: 100%;  
+  padding: 15px;
+  margin-right: 10px;
+  margin-top: 15px;
+  background-color: #f2f2f2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+// Anpassung Error-Box
 div.error_box {
   width: 100%;  
   padding: 10px;
@@ -113,12 +134,4 @@ div.error_box {
 div.error_box h4 {
   color: red;
 }
-div.footer {
-  text-align: right;
-  width: 100%;  
-  padding: 15px;
-  margin-right: 10px;
-  margin-top: 15px;
-  background-color: #f2f2f2;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+

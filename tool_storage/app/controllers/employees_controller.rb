@@ -3,12 +3,12 @@ before_action :require_signin
 before_action :set_employee, only: [:show, :edit, :update, :destroy]
 
   def index
-    @employees = Employee.all
+    @employees = Employee.all.order("nachname ASC").order("vorname ASC")
   end
 
   def show 
-    @indextools = @employee.indextools
-    @indexmachines = @employee.indexmachines   
+    @indextools = @employee.indextools.order("ausgegeben_am DESC")
+    @indexmachines = @employee.indexmachines.order("ausgegeben_am DESC")   
     @machines = Machine.all
     @tools = Tool.all
   end

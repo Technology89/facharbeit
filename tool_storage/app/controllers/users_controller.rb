@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :require_correct_user, only: [:edit, :update]
 
   def index
-    @users = User.all
+    @users = User.all.order("name ASC")
   end
   def new
     @user = User.new

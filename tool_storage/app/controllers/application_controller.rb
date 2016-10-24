@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     else
       employee = current_employee
       a = Time.now.utc - session[:time_now].to_time(:utc)
-      if a > 10000
+      if a > 300
         session[:employee_id] = nil
         redirect_to new_employee_session_url, notice: "Aufgrund von Zeitüberschreitung wurde die Kartei von #{employee.vorname} #{employee.nachname} geschlossen"
       else
