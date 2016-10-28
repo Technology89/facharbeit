@@ -36,9 +36,9 @@ Tool.create(hersteller: "Garant", modell: "Maulschlüssel 12 Zoll", barcode: "33
 Tool.create(hersteller: "Garant", modell: "Maulschlüssel 13 Zoll", barcode: "3354979", lagerbestand: "4", mindestbestand: "5", anzahl_ersatz: "2")
 
 Machine.create(hersteller: "Bosch", modell: "Bohrhammer SDS", barcode: "6364283", ausgeliehen: "false")
-Machine.create(hersteller: "Dewalt", modell: "Akkuschrauber", barcode: "6364284", ausgeliehen: "false")
+Machine.create(hersteller: "Dewalt", modell: "Akkuschrauber", barcode: "6364284", ausgeliehen: "true")
 Machine.create(hersteller: "Bosch", modell: "Stichsäge", barcode: "6364285", ausgeliehen: "false")
-Machine.create(hersteller: "Bosch", modell: "Bohrhammer SDS", barcode: "6364286", ausgeliehen: "false")
+Machine.create(hersteller: "Bosch", modell: "Bohrhammer SDS", barcode: "6364286", ausgeliehen: "true")
 Machine.create(hersteller: "Bosch", modell: "Bohrhammer SDS", barcode: "6364287", ausgeliehen: "false")
 Machine.create(hersteller: "Bosch", modell: "Bohrhammer SDS", barcode: "6364288", ausgeliehen: "false")
 Machine.create(hersteller: "Bosch", modell: "Bohrhammer SDS", barcode: "6364289", ausgeliehen: "false")
