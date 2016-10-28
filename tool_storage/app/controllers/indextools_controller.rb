@@ -10,12 +10,12 @@ before_action :require_employee
 
   def create
     tool = Tool.find_by(barcode: params[:barcode][0...7])
-    if tool.lagerbestand <= 0
-      redirect_to new_employee_indextool_url(@employee.id), alert: "Der Lagerbestand von #{tool.hersteller} #{tool.modell} ist auf 0. Bitte erst auffüllen"
-    else  
-      if tool == nil
-        redirect_to new_employee_indextool_url(@employee.id), alert: "Barcode nicht gefunden"
-      else
+    if tool == nil
+      redirect_to new_employee_indextool_url(@employee.id), alert: "Barcode nicht gefunden"
+    else
+      if tool.lagerbestand <= 0
+          redirect_to new_employee_indextool_url(@employee.id), alert: "Der Lagerbestand von #{tool.hersteller} #{tool.modell} ist auf 0. Bitte erst auffüllen"
+      else  
         a = @employee.indextools.where(tool_id: tool.id)
         if a.blank?
           params[:indextool][:tool_id] = tool.id
