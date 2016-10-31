@@ -77,6 +77,6 @@ class MachinesController < ApplicationController
     end
 
     def machine_params
-      params.require(:machine).permit(:hersteller, :modell, :barcode, :ausgeliehen, :ausgegeben_am)
+      params.require(:machine).permit(:hersteller, :modell, :barcode, :ausgegeben, :ausgegeben_am)
     end
 end

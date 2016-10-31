@@ -1,1 +1,1 @@
-json.extract! @machine, :id, :Hersteller, :Modell, :Barcode, :Ausgeliegen, :Ausgeliehen_seit, :created_at, :updated_at
+json.extract! @machine, :id, :hersteller, :modell, :barcode, :ausgegeben, :ausgegeben_am, :created_at, :updated_at

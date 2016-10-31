@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161020142533) do
+ActiveRecord::Schema.define(version: 20161031121213) do
 
   create_table "employees", force: :cascade do |t|
     t.string   "vorname"
@@ -50,9 +50,9 @@ ActiveRecord::Schema.define(version: 20161020142533) do
     t.string   "hersteller"
     t.string   "modell"
     t.integer  "barcode"
-    t.boolean  "ausgeliehen"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "ausgegeben"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tools", force: :cascade do |t|

@@ -1,11 +1,10 @@
 class CreateMachines < ActiveRecord::Migration
   def change
     create_table :machines do |t|
-      t.string :Hersteller
-      t.string :Modell
-      t.integer :Barcode
-      t.boolean :Ausgeliegen
-      t.date :Ausgeliehen_seit
+      t.string :hersteller
+      t.string :modell
+      t.integer :barcode
+      t.boolean :ausgegeben
 
       t.timestamps null: false
     end

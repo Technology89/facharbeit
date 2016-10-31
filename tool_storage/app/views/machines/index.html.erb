@@ -21,7 +21,7 @@
                 <td><%= machine.hersteller %></td>
                 <td><%= machine.modell %></td>
                 <td><%= machine.barcode %></td>
-                <td><%= bool_to_german(machine.ausgeliehen) %></td>
+                <td><%= bool_to_german(machine.ausgegeben) %></td>
                 <td><%= link_to "<i class='fi-eye icon-green'></i>".html_safe, machine %></td>
                 <td><%= link_to "<i class='fi-pencil icon-blue'></i>".html_safe, edit_machine_path(machine) %></td>
                 <td><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, machine, method: :delete, data: { confirm: 'Sind sie sicher das sie diesen Eintrag löschen möchten?' } %></td>
