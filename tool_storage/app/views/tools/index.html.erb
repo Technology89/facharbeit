@@ -25,9 +25,9 @@
                 <td><%= tool.lagerbestand %></td>
                 <td><%= tool.mindestbestand %></td>
                 <td><%= tool.anzahl_ersatz %></td>
-                <td><%= link_to "<i class='fi-eye icon-green'></i>".html_safe, tool %></td>
-                <td><%= link_to "<i class='fi-pencil icon-blue'></i>".html_safe, edit_tool_path(tool) %></td>
-                <td><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, tool, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "<i class='fi-magnifying-glass icon-green'></i>".html_safe, tool %></td>
+                <td><%= link_to "<i class='fi-wrench icon-blue'></i>".html_safe, edit_tool_path(tool) %></td>
+                <td><%= link_to "<i class='fi-x icon-red'></i>".html_safe, tool, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
             <% end %>
           </tbody>

@@ -54,3 +54,7 @@ Employee.first.indexmachines.create(ausgeliehen: true, ausgegeben_am: "2016-05-0
 Employee.first.indexmachines.create(ausgeliehen: false, ausgegeben_am: "2016-05-05", machine_id: 3, ausgegeben_von: "admin")
 Employee.first.indexmachines.create(ausgeliehen: true, ausgegeben_am: "2016-10-22", machine_id: 4, ausgegeben_von: "admin")
 Employee.second.indexmachines.create(ausgeliehen: false, ausgegeben_am: "2016-05-05", machine_id: 5, ausgegeben_von: "admin")
+
+Employee.first.indextools.create(ausgegeben_am: "2016-05-05", tool_id: 3, ausgegeben_von: "harald")
+Employee.first.indextools.create(ausgegeben_am: "2016-08-07", tool_id: 7, ausgegeben_von: "klaus")
+Employee.first.indextools.create(ausgegeben_am: "2016-09-11", tool_id: 4, ausgegeben_von: "admin")

@@ -6,7 +6,7 @@ class CreateTools < ActiveRecord::Migration
       t.integer :barcode
       t.integer :lagerbestand
       t.integer :mindestbestand
-      t.integer :anzahl_Ersatz
+      t.integer :anzahl_ersatz
 
       t.timestamps null: false
     end

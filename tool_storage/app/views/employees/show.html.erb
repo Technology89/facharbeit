@@ -26,7 +26,7 @@
                 <td><%= @machines.find_by(id: indexmachine.machine_id).barcode %></td>
                 <td><%= bool_to_german(indexmachine.ausgeliehen) %></td>
                 <% if @employee == current_employee %>
-                  <td><center><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee_indexmachine_path(@employee.id, indexmachine.id), method: :delete, data: { confirm: 'Sind sie sicher das sie den Eintrag löschen möchten?' } %></center></td>
+                  <td><center><%= link_to "<i class='fi-refresh icon-red'></i>".html_safe, employee_indexmachine_path(@employee.id, indexmachine.id), method: :delete, data: { confirm: 'Sind sie sicher das sie den Eintrag löschen möchten?' } %></center></td>
                 <% end %>
               </tr>
             <% end %>
@@ -58,7 +58,7 @@
             <th>Barcode</th>
             <% if @employee == current_employee %>
               <th>Rückgabe</th>
-              <th>Verlust</th>
+              <th>Defekt / Verlust</th>
             <% end %>
           </tr>
         </thead>
@@ -70,8 +70,8 @@
               <td><%= @tools.find_by(id: indextool.tool_id).hersteller %> <%= @tools.find_by(id: indextool.tool_id).modell %></td>
               <td><%= @tools.find_by(id: indextool.tool_id).barcode %></td>
               <% if @employee == current_employee %>        
-                <td><center><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee_indextool_path(@employee.id, indextool.id), method: :delete, data: { confirm: 'Sind sie sicher das sie den Eintrag löschen möchten?' } %></center></td>
-                <td><center><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, remove_employee_indextool_path(@employee.id, indextool.id), data: { confirm: 'Sind sie sicher das sie den Eintrag löschen möchten?' } %></center></td>
+                <td><center><%= link_to "<i class='fi-refresh icon-red'></i>".html_safe, employee_indextool_path(@employee.id, indextool.id), method: :delete, data: { confirm: 'Sind sie sicher das sie den Eintrag löschen möchten?' } %></center></td>
+                <td><center><%= link_to "<i class='fi-x icon-red'></i>".html_safe, remove_employee_indextool_path(@employee.id, indextool.id), data: { confirm: 'Sind sie sicher das sie den Eintrag löschen möchten?' } %></center></td>
               <% end %>
             </tr>
           <% end %>

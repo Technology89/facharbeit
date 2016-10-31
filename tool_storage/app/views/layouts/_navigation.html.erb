@@ -14,7 +14,7 @@
     <% if current_user %>    
     <ul>
       <li class="has-dropdown">
-       <%= link_to "Benutzer", users_path %>
+       <%= link_to  ("Benutzer <i class='fi-torsos-male-female'></i>".html_safe).html_safe, users_path %>
         <ul class="dropdown">
           <li><%= link_to "Neuer Benutzer", new_user_path %></li>                   
         </ul>
@@ -22,7 +22,7 @@
     </ul>
     <ul>
       <li class="has-dropdown">
-       <%= link_to "Mitarbeiter", employees_path %>
+       <%= link_to ("Mitarbeiter <i class='fi-torsos-all'></i>".html_safe).html_safe, employees_path %>
         <ul class="dropdown">
           <li><%= link_to "Neuer Mitarbeiter", new_employee_path %></li>                   
         </ul>
@@ -30,7 +30,7 @@
     </ul>
     <ul>
       <li class="has-dropdown">
-       <%= link_to "Werkzeuge", tools_path %>
+       <%= link_to ("Werkzeuge <i class='fi-wrench'></i>".html_safe), tools_path %>
         <ul class="dropdown">
           <li><%= link_to "Neues Werkzeug", new_tool_path %></li>
           <li><%= link_to "Nachbestellung", reorder_path %></li> 
@@ -40,7 +40,7 @@
     </ul>
     <ul>
       <li class="has-dropdown">
-       <%= link_to "Maschinen", machines_path %>
+       <%= link_to ("Maschinen <i class='fi-widget'></i>".html_safe), machines_path %>
         <ul class="dropdown">
           <li><%= link_to "Neue Maschine", new_machine_path %></li>   
           <li><%= link_to "Überfällig", overdue_path %></li>                    
@@ -52,7 +52,7 @@
       <% if current_user && current_employee %>
        <ul>
         <li class="has-dropdown">
-         <%= link_to full_name_with_nr(current_employee), employee_path(current_employee) %>
+         <%= link_to ("#{full_name_with_nr(current_employee)} <i class='fi-folder'></i>".html_safe), employee_path(current_employee) %>
           <ul class="dropdown">
             <li><%= link_to "Maschine ausgeben", new_employee_indexmachine_path(current_employee) %></li>
             <li><%= link_to "Werkzeug ausgeben", new_employee_indextool_path(current_employee) %></li>  
@@ -63,9 +63,9 @@
       <% end %>
       <% if current_user %>
         <% if current_employee.blank? %>  
-        <li><%= link_to "Kartei öffnen", begin_path %></li>
+        <li><%= link_to ("Kartei öffnen <i class='fi-archive'></i>".html_safe), begin_path %></li>
         <% end %>     
-        <li><%= link_to "Ausloggen", session_path, method: :delete %></li>
+        <li><%= link_to ("Ausloggen <i class='fi-x'></i>".html_safe), session_path, method: :delete %></li>
       <% else %>
       <li><%= link_to "Einloggen", signin_path %></li>     
       <% end %>

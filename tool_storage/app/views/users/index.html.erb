@@ -15,8 +15,8 @@
             <% @users.each do |user| %>
               <tr>
                 <td><%= user.name %></td>
-                <td><% if user.name == current_user.name %><%= link_to "<i class='fi-pencil icon-blue'></i>".html_safe, edit_user_path(user) %><% end %></td>
-                <td><% unless user.id == current_user.id %><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, user, method: :delete, data: { confirm: 'Sind sie sicher?' } %><% end %></td>
+                <td><% if user == current_user %><%= link_to "<i class='fi-wrench icon-blue'></i>".html_safe, edit_user_path(user) %><% end %></td>
+                <td><% unless user == current_user %><%= link_to "<i class='fi-x icon-red'></i>".html_safe, user, method: :delete, data: { confirm: 'Sind sie sicher?' } %><% end %></td>
               </tr>
             <% end %>
           </tbody>

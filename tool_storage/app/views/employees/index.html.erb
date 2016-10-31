@@ -20,8 +20,8 @@
               <td><%= employee.nachname %></td>
               <td><%= employee.vorname %></td>
               <td><%= employee.personalnummer %></td>
-              <td><%= link_to "<i class='fi-pencil icon-blue'></i>".html_safe, edit_employee_path(employee) %></td>
-              <td><%= link_to "<i class='fi-trash icon-red'></i>".html_safe, employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to "<i class='fi-wrench icon-blue'></i>".html_safe, edit_employee_path(employee) %></td>
+              <td><%= link_to "<i class='fi-x icon-red'></i>".html_safe, employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>
