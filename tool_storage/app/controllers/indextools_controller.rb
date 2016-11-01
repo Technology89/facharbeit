@@ -23,15 +23,15 @@ before_action :require_employee
           if @indextool.save
             tool.lagerbestand -= 1
             tool.save
-              redirect_to employee_path(@employee.id), notice: "#{tool.hersteller} #{tool.modell} wurde zur Kartei von #{@employee.vorname} #{@employee.nachname} hinzugefügt"           
+              redirect_to new_employee_indextool_url(@employee.id), notice: "#{tool.hersteller} #{tool.modell} wurde zur Kartei von #{@employee.vorname} #{@employee.nachname} hinzugefügt"           
           else
-            render :new, alert: "Fehler beim Speichern!"  
+            redirect_to new_employee_indextool_url(@employee.id), alert: "Fehler beim Speichern!"  
           end 
         else
           tool.anzahl_ersatz += 1
           tool.lagerbestand -= 1
           tool.save
-            redirect_to employee_path(@employee.id), notice: "#{tool.hersteller} #{tool.modell} wurde auf der Kartei von #{@employee.vorname} #{@employee.nachname} als Ersatz eingetragen"
+            redirect_to new_employee_indextool_url(@employee.id), notice: "#{tool.hersteller} #{tool.modell} wurde auf der Kartei von #{@employee.vorname} #{@employee.nachname} als Ersatz eingetragen"
         end      
       end
     end  
