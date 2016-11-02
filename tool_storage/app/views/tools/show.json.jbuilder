@@ -1,1 +1,1 @@
-json.extract! @tool, :id, :Hersteller, :Modell, :Barcode, :Lagerbestand, :Mindestbestand, :Anzahl_Ersatz, :created_at, :updated_at
+json.extract! @tool, :id, :hersteller, :modell, :barcode, :lagerbestand, :mindestbestand, :anzahl_ersatz, :created_at, :updated_at
