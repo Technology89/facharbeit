@@ -48,7 +48,11 @@ class MachinesController < ApplicationController
 
   def create
     last_entry = Machine.all.order("barcode DESC")
-    last_barcode = last_entry.first.barcode
+    if last_entry.blank?
+      last_barcode = 6364282
+    else
+      last_barcode = last_entry.first.barcode
+    end
     params[:machine][:barcode] = last_barcode + 1
     @machine = Machine.new(machine_params)
     if @machine.save

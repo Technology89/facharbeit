@@ -1,9 +1,9 @@
 <div class="mainpart">
   <h3>Maschinen von <%= full_name(@employee) %></h3>
-  <% unless @indexmachines.blank? %>
-    <hr>
-    <div class="row">
-      <div class="small-12 medium-12 large-12 columns">
+  <hr>      
+  <div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+      <% unless @indexmachines.blank? %>
         <table>
           <thead>
             <tr>      
@@ -32,9 +32,9 @@
             <% end %>
           </tbody>
         </table>
-      </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
   <% if current_employee == @employee %>
     <div class="row">
       <div class="small-12 medium-12 large-12 columns">
@@ -45,41 +45,42 @@
 </div>
 <div class="mainpart">
   <h3>Werkzeuge von <%= full_name(@employee) %></h3>
-  <% unless @indextools.blank? %>
-  <hr>
+  <hr>      
   <div class="row">
     <div class="small-12 medium-12 large-12 columns">
-      <table>
-        <thead>
-          <tr>
-            <th>Ausgegeben am</th>
-            <th>Ausgegeben von</th>
-            <th>Werkzeug</th>
-            <th>Barcode</th>
-            <% if @employee == current_employee %>
-              <th>Rückgabe</th>
-              <th>Defekt / Verlust</th>
-            <% end %>
-          </tr>
-        </thead>
-        <tbody>
-          <% @indextools.each do |indextool| %>
+      <% unless @indextools.blank? %>  
+        <table>
+          <thead>
             <tr>
-              <td><%= de_date(indextool.ausgegeben_am) %></td>
-              <td><%= indextool.ausgegeben_von %></td>
-              <td><%= @tools.find_by(id: indextool.tool_id).hersteller %> <%= @tools.find_by(id: indextool.tool_id).modell %></td>
-              <td><%= @tools.find_by(id: indextool.tool_id).barcode %></td>
-              <% if @employee == current_employee %>        
-                <td><center><%= link_to "<i class='fi-refresh icon-red'></i>".html_safe, employee_indextool_path(@employee.id, indextool.id), method: :delete, data: { confirm: 'Sind sie sicher das sie den Eintrag löschen möchten?' } %></center></td>
-                <td><center><%= link_to "<i class='fi-x icon-red'></i>".html_safe, remove_employee_indextool_path(@employee.id, indextool.id), data: { confirm: 'Sind sie sicher das sie den Eintrag löschen möchten?' } %></center></td>
+              <th>Ausgegeben am</th>
+              <th>Ausgegeben von</th>
+              <th>Werkzeug</th>
+              <th>Barcode</th>
+              <% if @employee == current_employee %>
+                <th>Rückgabe</th>
+                <th>Defekt / Verlust</th>
               <% end %>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @indextools.each do |indextool| %>
+              <tr>
+                <td><%= de_date(indextool.ausgegeben_am) %></td>
+                <td><%= indextool.ausgegeben_von %></td>
+                <td><%= @tools.find_by(id: indextool.tool_id).hersteller %> <%= @tools.find_by(id: indextool.tool_id).modell %></td>
+                <td><%= @tools.find_by(id: indextool.tool_id).barcode %></td>
+                <% if @employee == current_employee %>        
+                  <td><center><%= link_to "<i class='fi-refresh icon-red'></i>".html_safe, employee_indextool_path(@employee.id, indextool.id), method: :delete, data: { confirm: 'Sind sie sicher das sie den Eintrag löschen möchten?' } %></center></td>
+                  <td><center><%= link_to "<i class='fi-x icon-red'></i>".html_safe, remove_employee_indextool_path(@employee.id, indextool.id), data: { confirm: 'Sind sie sicher das sie den Eintrag löschen möchten?' } %></center></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
     </div>
   </div>
-  <% end %>
+  
   <% if current_employee == @employee %>
     <div class="row">
       <div class="small-12 medium-12 large-12 columns">

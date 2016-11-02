@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post 'refill' => 'tools#save_refill'
   get 'refill' => 'tools#refill'
 
-  root "users#index"
+  root 'employee_sessions#new'
   resources :users
   resource :session
   resource :employee_session

@@ -38,7 +38,11 @@ class ToolsController < ApplicationController
 
   def create
     last_entry = Tool.all.order("barcode DESC")
-    last_barcode = last_entry.first.barcode
+    if last_entry.blank?
+      last_barcode = 3354964
+    else
+      last_barcode = last_entry.first.barcode
+    end
     params[:tool][:barcode] = last_barcode + 1
     params[:tool][:anzahl_ersatz] = 0
     @tool = Tool.new(tool_params)
