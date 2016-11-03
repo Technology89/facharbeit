@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
 
 	def create
 		if user = User.authenticate(params[:name], params[:password])
-			session[:user_id] = user.id
+			session[:user_id] = user.id			
+			session[:time_now_session_user] = Time.now.utc
 			redirect_to new_employee_session_url
 		else			
 			redirect_to new_session_url, alert: "Name wurde nicht gefunden oder das Passwort ist falsch"

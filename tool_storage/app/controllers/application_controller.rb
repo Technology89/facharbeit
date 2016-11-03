@@ -26,16 +26,31 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def watch_session
+  def watch_session_user
+    if current_user.blank?
+    else
+      user = current_user
+      time = Time.now.utc - session[:time_now_session_user].to_time(:utc)
+      if time > 1800       
+        session[:employee_id] = nil
+        session[:user_id] = nil
+        redirect_to signin_url, notice: "Aufgrund von Zeitüberschreitung wurde User #{user.name} abgemeldet"
+      else
+        session[:time_now_session_user] = Time.now.to_s
+      end
+    end
+  end
+
+  def watch_session_employee
     if current_employee.blank?
     else
       employee = current_employee
-      a = Time.now.utc - session[:time_now].to_time(:utc)
-      if a > 300
-        session[:employee_id] = nil
+      time = Time.now.utc - session[:time_now].to_time(:utc)
+      if time > 300
+        session[:employee_id_session_employee] = nil
         redirect_to new_employee_session_url, notice: "Aufgrund von Zeitüberschreitung wurde die Kartei von #{employee.vorname} #{employee.nachname} geschlossen"
       else
-        session[:time_now] = Time.now.to_s
+        session[:time_now_session_employee] = Time.now.to_s
       end
     end
   end
