@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :watch_session  
-
+  before_action :watch_session_user
+  before_action :watch_session_employee
+  
   def current_user
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
@@ -45,7 +46,7 @@ class ApplicationController < ActionController::Base
     if current_employee.blank?
     else
       employee = current_employee
-      time = Time.now.utc - session[:time_now].to_time(:utc)
+      time = Time.now.utc - session[:time_now_session_employee].to_time(:utc)
       if time > 300
         session[:employee_id_session_employee] = nil
         redirect_to new_employee_session_url, notice: "Aufgrund von Zeitüberschreitung wurde die Kartei von #{employee.vorname} #{employee.nachname} geschlossen"

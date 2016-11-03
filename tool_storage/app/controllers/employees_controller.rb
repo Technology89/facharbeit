@@ -1,6 +1,6 @@
 class EmployeesController < ApplicationController
-before_action :require_signin
-before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :require_signin
+  before_action :set_employee, only: [:show, :edit, :update, :destroy]
 
   def index
     @employees = Employee.all.order("nachname ASC").order("vorname ASC")
