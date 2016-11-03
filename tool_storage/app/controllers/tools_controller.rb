@@ -42,7 +42,9 @@ class ToolsController < ApplicationController
       last_barcode = 3354964
     else
       last_barcode = last_entry.first.barcode
-    end
+    end    
+    params[:tool][:hersteller] = params[:tool][:hersteller].capitalize
+    params[:tool][:modell] = params[:tool][:modell].capitalize
     params[:tool][:barcode] = last_barcode + 1
     params[:tool][:anzahl_ersatz] = 0
     @tool = Tool.new(tool_params)

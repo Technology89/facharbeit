@@ -21,6 +21,8 @@ before_action :set_employee, only: [:show, :edit, :update, :destroy]
   end
 
   def create
+    params[:employee][:vorname] = params[:employee][:vorname].capitalize
+    params[:employee][:nachname] = params[:employee][:nachname].capitalize
     @employee = Employee.new(employee_params)
     if @employee.save
       redirect_to employees_url, notice: "#{@employee.vorname} #{@employee.nachname} wurde erfolgreich erstellt" 

@@ -52,7 +52,9 @@ class MachinesController < ApplicationController
       last_barcode = 6364282
     else
       last_barcode = last_entry.first.barcode
-    end
+    end    
+    params[:machine][:hersteller] = params[:machine][:hersteller].capitalize
+    params[:machine][:modell] = params[:machine][:modell].capitalize
     params[:machine][:barcode] = last_barcode + 1
     @machine = Machine.new(machine_params)
     if @machine.save
