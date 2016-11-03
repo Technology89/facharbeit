@@ -35,8 +35,7 @@ class MachinesController < ApplicationController
           @indexmachine = indexmachine
         end 
       end 
-    end 
-   
+    end    
   end
 
   def new
