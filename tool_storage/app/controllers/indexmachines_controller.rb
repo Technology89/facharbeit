@@ -1,7 +1,7 @@
 class IndexmachinesController < ApplicationController 
   before_action :require_signin
-  before_action :set_employee
   before_action :require_employee, only: [:new]
+  before_action :set_employee
 
   def new
     @indexmachine = @employee.indexmachines.new(employee_id: @employee.id, ausgegeben_am: Date.current())    

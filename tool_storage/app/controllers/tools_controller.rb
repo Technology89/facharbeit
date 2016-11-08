@@ -17,16 +17,7 @@ class ToolsController < ApplicationController
     @barcode = Barby::EAN8.new(@tool.barcode.to_s)
     File.open('app/assets/images/ean8.png', 'wb'){|f|
       f.write @barcode.to_png(:xdim => 4, :height => 60, :margin => 5)
-    }
-    Employee.all.each do | employee | 
-      indextools = employee.indextools
-      indextools.each do | indextool| 
-        if indextool.tool_id == @tool.id 
-          @employee = employee
-          @indextool = indextool
-        end 
-      end 
-    end 
+    }    
   end
 
   def new

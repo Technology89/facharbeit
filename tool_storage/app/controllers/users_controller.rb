@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_signin
-  before_action :set_user, only: [ :edit, :update, :destroy]
   before_action :require_correct_user, only: [:edit, :update]
+  before_action :set_user, only: [ :edit, :update, :destroy]  
 
   def index
     @users = User.all.order("name ASC")

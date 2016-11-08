@@ -1,10 +1,10 @@
 class MachinesController < ApplicationController
-  before_action :require_signin
-  before_action :set_machine, only: [:show, :edit, :update, :destroy]
   require 'barby'
   require 'barby/barcode/ean_8'
   require 'barby/outputter/png_outputter'
-    
+  before_action :require_signin
+  before_action :set_machine, only: [:show, :edit, :update, :destroy]
+ 
   def index
     @machines = Machine.all.order("hersteller ASC").order("modell ASC").order("barcode ASC")
   end

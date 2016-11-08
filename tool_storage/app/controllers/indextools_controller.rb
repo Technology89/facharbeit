@@ -1,8 +1,8 @@
 class IndextoolsController < ApplicationController
   before_action :require_signin
   before_action :set_indextool, :set_tool, only: [:remove, :destroy]
-  before_action :set_employee
   before_action :require_employee
+  before_action :set_employee  
 
   def new
     @indextool = @employee.indextools.new(employee_id: @employee.id, ausgegeben_am: Date.current(), ausgegeben_von: current_user.name)
