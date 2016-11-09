@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		if user = User.authenticate(params[:name], params[:password])
+		if user = User.authenticate(params[:name].capitalize, params[:password])
 			session[:user_id] = user.id			
 			session[:time_now_session_user] = Time.now.utc
 			redirect_to new_employee_session_url
